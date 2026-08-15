@@ -1,0 +1,6 @@
+{
+  "name": "Academic Management System",
+  "description": "Comprehensive school management portal with dedicated modules for administration, teachers, students, parents, accounting, HR, library, and communications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
