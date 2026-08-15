@@ -31,15 +31,15 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
     libelleCle: Parameters<typeof traduire>[0];
     icone: string;
   }[] = [
-    { cle: 'administrateur', libelleCle: 'role_administrateur', icone: 'lucide:shield' },
-    { cle: 'professeur', libelleCle: 'role_professeur', icone: 'lucide:book-open' },
-    { cle: 'eleve', libelleCle: 'role_eleve', icone: 'lucide:graduation-cap' },
-    { cle: 'parent', libelleCle: 'role_parent', icone: 'lucide:users' },
-    { cle: 'secretaire', libelleCle: 'role_secretaire', icone: 'lucide:clipboard-list' },
-    { cle: 'comptable', libelleCle: 'role_comptable', icone: 'lucide:credit-card' },
-    { cle: 'ressources_humaines', libelleCle: 'role_ressources_humaines', icone: 'lucide:briefcase' },
-    { cle: 'bibliothecaire', libelleCle: 'role_bibliothecaire', icone: 'lucide:building-2' },
-    { cle: 'charge_communication', libelleCle: 'role_charge_communication', icone: 'lucide:megaphone' },
+    { cle: 'administrateur', libelleCle: 'role_administrateur', icone: 'ph:shield-bold' },
+    { cle: 'professeur', libelleCle: 'role_professeur', icone: 'ph:book-open-bold' },
+    { cle: 'eleve', libelleCle: 'role_eleve', icone: 'ph:graduation-cap-bold' },
+    { cle: 'parent', libelleCle: 'role_parent', icone: 'ph:users-bold' },
+    { cle: 'secretaire', libelleCle: 'role_secretaire', icone: 'ph:clipboard-text-bold' },
+    { cle: 'comptable', libelleCle: 'role_comptable', icone: 'ph:credit-card-bold' },
+    { cle: 'ressources_humaines', libelleCle: 'role_ressources_humaines', icone: 'ph:briefcase-bold' },
+    { cle: 'bibliothecaire', libelleCle: 'role_bibliothecaire', icone: 'ph:buildings-bold' },
+    { cle: 'charge_communication', libelleCle: 'role_charge_communication', icone: 'ph:megaphone-bold' },
   ];
 
   const roleActuel = rolesDisponibles.find((r) => r.cle === roleActif) || rolesDisponibles[0];
@@ -61,7 +61,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
               className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
               aria-label="Toggle navigation menu"
             >
-              <Icone icone="lucide:menu" className="w-6 h-6" />
+              <Icone icone="ph:list-bold" className="w-6 h-6" />
             </button>
 
             <div
@@ -69,7 +69,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
               onClick={() => naviguer(obtenirCheminTableauDeBordParRole(roleActif))}
             >
               <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-xs">
-                <Icone icone="lucide:graduation-cap" className="w-6 h-6" />
+                <Icone icone="ph:graduation-cap-bold" className="w-6 h-6" />
               </div>
               <div className="hidden sm:block">
                 <span className="font-bold text-slate-900 text-base leading-tight block">
@@ -84,7 +84,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
 
           <div className="flex-1 max-w-md hidden md:block">
             <div className="relative">
-              <Icone icone="lucide:search" className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Icone icone="ph:magnifying-glass-bold" className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={termeRecherche}
@@ -110,7 +110,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
-                <Icone icone="lucide:languages" className="w-3 h-3" />
+                <Icone icone="ph:translate-bold" className="w-3 h-3" />
                 FR
               </button>
               <button
@@ -122,7 +122,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
-                <Icone icone="lucide:languages" className="w-3 h-3" />
+                <Icone icone="ph:translate-bold" className="w-3 h-3" />
                 EN
               </button>
             </div>
@@ -135,7 +135,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                 className="relative p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="View announcements"
               >
-                <Icone icone="lucide:bell" className="w-5 h-5" />
+                <Icone icone="ph:bell-bold" className="w-5 h-5" />
                 {listeAnnonces.length > 0 && (
                   <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-600" />
                 )}
@@ -179,7 +179,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
               >
                 <Icone icone={roleActuel.icone} className="w-4 h-4 text-red-600" />
                 <span className="hidden sm:inline">{traduire(roleActuel.libelleCle)}</span>
-                <Icone icone="lucide:chevron-down" className="w-3.5 h-3.5 text-slate-500" />
+                <Icone icone="ph:caret-down-bold" className="w-3.5 h-3.5 text-slate-500" />
               </button>
 
               {menuRoleOuvert && (
@@ -202,7 +202,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                           <Icone icone={r.icone} className={`w-4 h-4 ${estSelectionne ? 'text-red-600' : 'text-slate-500'}`} />
                           <span>{traduire(r.libelleCle)}</span>
                         </div>
-                        {estSelectionne && <Icone icone="lucide:user-check" className="w-3.5 h-3.5 text-red-600" />}
+                        {estSelectionne && <Icone icone="ph:user-check-bold" className="w-3.5 h-3.5 text-red-600" />}
                       </button>
                     );
                   })}

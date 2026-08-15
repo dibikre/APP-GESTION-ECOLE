@@ -58,7 +58,7 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
             onClick={surFermerMenuMobile}
             className="p-1.5 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
           >
-            <Icone icone="lucide:x" className="w-5 h-5" />
+            <Icone icone="ph:x-bold" className="w-5 h-5" />
           </button>
         </div>
 

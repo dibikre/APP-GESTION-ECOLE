@@ -38,7 +38,7 @@ export const ModaleFormulaire: React.FC<ProprietesModaleFormulaire> = ({
             onClick={surFermeture}
             className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
           >
-            <Icone icone="lucide:x" className="w-5 h-5" />
+            <Icone icone="ph:x-bold" className="w-5 h-5" />
           </button>
         </div>
 
