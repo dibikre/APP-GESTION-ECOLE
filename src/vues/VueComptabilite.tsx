@@ -5,7 +5,7 @@ import {
   ArrowDownLeft,
   AlertCircle,
   Receipt,
-} from 'lucide-react';
+} from '../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../composants/communs/BoutonRouge';
 import { CarteStatistique } from '../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../controleurs/contexteAcademie';
@@ -36,9 +36,6 @@ export const VueComptabilite: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             {traduire('titreComptabilite')}
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
-            {traduire('descriptionComptabilite')}
-          </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <BoutonRouge

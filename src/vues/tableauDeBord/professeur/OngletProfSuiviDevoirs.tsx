@@ -7,7 +7,7 @@ import {
   Check,
   X,
   Clock,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 

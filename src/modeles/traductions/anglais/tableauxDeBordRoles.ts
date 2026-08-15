@@ -1,0 +1,132 @@
+export const TRADUCTIONS_EN_TABLEAUX_ROLES = {
+  // Headers & Sections
+  menuEspaceTravail: 'Workspace Menu',
+  apercuFinancierEconome: 'Financial & Bursar Overview',
+  bureauEconome: 'Bursar & Treasury Office',
+  vueEnsembleDirection: 'Executive Overview',
+  vueEnsembleEnseignement: 'Faculty Overview',
+  vueEnsembleEleve: 'Student Dashboard',
+  vueEnsembleParent: 'Child Progress & Attendance',
+  vueEnsembleSecretariat: 'Admissions Desk',
+  apercuRH: 'Human Resources & Staffing',
+  apercuBibliotheque: 'Library & Learning Resources',
+  apercuCommunication: 'Communications & Public Relations',
+
+  // KPIs & Cards
+  kpiElevesInscrits: 'Enrolled Students',
+  kpiElevesInscritsSousTitre: 'Active across 4 cohorts',
+  kpiTauxPresence: 'Attendance Rate',
+  kpiTauxPresenceSousTitre: 'Daily campus attendance',
+  kpiMoyenneAcademique: 'Academic Average',
+  kpiMoyenneAcademiqueSousTitre: 'Institution-wide GPA',
+  kpiRatioEleveProf: 'Student / Teacher Ratio',
+  kpiCorpsEnseignantMembres: 'Faculty members',
+
+  // Financial Indicators
+  revenuTotalFacture: 'Total Invoiced Revenue',
+  recettesEncaisses: 'Collected Cash Receipts',
+  depensesFonctionnement: 'Operating Disbursements',
+  soldeNetTresorerie: 'Net Treasury Balance',
+  tresorerieSaine: 'Healthy cashflow',
+  tauxRecouvrementPourcentage: 'collection rate',
+  salairesEtMaintenance: 'Payroll & maintenance',
+  anneeAcademiqueLibelle: 'Academic Year 2025-2026',
+
+  // Charts & Alerts
+  performanceCohortesTitre: 'Academic Cohort Performance & Attendance',
+  performanceCohortesSousTitre: 'Comparative grade average and presence rate',
+  alertesInstitutionnellesCritiques: 'Critical Institutional Alerts',
+  actionRequise: 'Action Req.',
+  trimestre2: 'Term 2',
+  comptesEnRetardTitre: '3 Overdue Tuition Accounts',
+  comptesEnRetardDesc: '$3,300 total pending payment for Term 2.',
+  moyenne: 'Average',
+  assiduite: 'Attendance',
+
+  // Accounting Details
+  fraisTrimestre2: 'Term 2 Tuition & Fees',
+  recettesBancairesVerifiees: 'Verified bank receipts',
+  facturesElevesEnAttente: 'pending student invoices',
+  indicateurRecouvrement: 'Receivable collection metric',
+  objectif85: 'Target 85%',
+  facturesImpayeesSousTitre: 'Student accounts requiring collection or reminders',
+  derniersPaiementsEncaisses: 'Latest Collected Payments',
+  journalPaiementsRecents: 'Certified bank collection receipts',
+  repartitionDepenses: 'Departmental Disbursement Breakdown',
+  budgetSalairesOps: 'Payroll, utilities & facilities expenses',
+
+  // HR & Staffing
+  effectifTotalSalaries: 'Active Staff',
+  contratsEnCours: 'Faculty & support personnel contracts',
+  masseSalarialeTitre: 'Monthly Payroll',
+  paieProchainVirement: 'Next direct deposit in 5 days',
+  congesEnAttenteTitre: 'Pending Leave Inquiries',
+  dossiersAValider: 'Awaiting admin approval',
+  recrutementsEnCours: 'Open Vacancies',
+  postesVacants: 'Faculty & operational postings',
+
+  // Library
+  fondsDocumentaireTitre: 'Total Catalogued Volumes',
+  titresReferences: 'Indexed titles & course handbooks',
+  exemplairesDispoTitre: 'Available on Shelf',
+  enRayonActuellement: 'Ready for circulation',
+  empruntsActifsTitre: 'Active Checkout Loans',
+  retoursAttendusCeMois: 'Due for return this month',
+  retardsRestitutionTitre: 'Overdue Returns',
+  rappelsEnvoyes: 'Automated overdue notices dispatched',
+
+  // Communications
+  circulairesOfficiellesTitre: 'Official Circulars',
+  publieesCeTrimestre: 'Broadcasted this term',
+  tauxOuvertureSMS: 'SMS Delivery Rate',
+  notificationsEnvoyees: 'Parents & guardians notified',
+  alertesCampusTitre: 'Campus Security Alerts',
+  incidentsSignales: 'Zero major incidents reported',
+
+  // Faculty / Teacher
+  kpiElevesAssignes: 'Assigned Students',
+  kpiMoyenneClasse: 'Class Average Score',
+  kpiPresenceAppel: 'Live Class Attendance',
+  kpiHeuresHebdo: 'Weekly Lecture Hours',
+  kpiHeuresHebdoSousTitre: '4 Course modules',
+  kpiPresenceAppelSousTitre: 'Daily morning roll-call',
+  emploiDuTempsEnseignant: 'Today’s Teaching Schedule',
+  emploiDuTempsEnseignantDesc: 'Upcoming classroom lectures and lab sessions',
+  tachesPedaPrioritaires: 'Priority Teaching Tasks',
+  enAttenteEvaluation: 'Pending',
+
+  // Student
+  kpiMoyenneEleve: 'Current GPA Score',
+  kpiRangClasse: 'Class Standing Rank',
+  kpiRangClasseSousTitre: 'Top 5% of cohort',
+  kpiDevoirsRendus: 'Assignments Submitted',
+  kpiDevoirsRendusSousTitre: '100% on schedule',
+  kpiLivresEmpruntes: 'Active Library Loans',
+  kpiLivresEmpruntesSousTitre: 'Zero overdue notices',
+  mesProchainsCours: 'My Daily Schedule',
+  mesProchainsCoursDesc: 'Classrooms and daily periods',
+  prochainsDevoirsExamens: 'Upcoming Deadlines & Quizzes',
+
+  // Parent
+  kpiMoyenneEnfant: 'Academic Average Score',
+  kpiAssiduiteEnfant: 'Presence & Attendance',
+  kpiAssiduiteEnfantSousTitre: '1 excused absence',
+  kpiSoldeFrais: 'Tuition Balance Due',
+  kpiSoldeFraisSousTitre: 'Term 2 in progress',
+  kpiMessagesEcole: 'School Dispatches',
+  kpiMessagesEcoleSousTitre: 'Latest memo yesterday',
+  bulletinTrimestriel: 'Term Academic Report',
+  calendrierRendezVous: 'Request Teacher Meeting',
+
+  // Secretary
+  kpiDossiersInscrits: 'Total Enrolled Files',
+  kpiDossiersInscritsSousTitre: 'Verified registrations',
+  kpiDemandesDocs: 'Document Requests',
+  kpiDemandesDocsSousTitre: 'Certificates & transcripts',
+  kpiAlertesDiscipline: 'Disciplinary Reports',
+  kpiAlertesDisciplineSousTitre: 'Reported incidents',
+  kpiTauxPresenceGlobale: 'Campus Attendance Rate',
+  kpiTauxPresenceGlobaleSousTitre: 'Across all grade levels',
+  dernieresInscriptions: 'Recent Registrations Processed',
+  guichetDemandes: 'Administrative Desk Queue',
+};

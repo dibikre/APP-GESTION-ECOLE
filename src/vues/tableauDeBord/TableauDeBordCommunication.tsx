@@ -6,7 +6,7 @@ import {
   Users,
   ShieldAlert,
   PlusCircle,
-} from 'lucide-react';
+} from '../../composants/communs/IconesAcademie';
 import { CarteStatistique } from '../../composants/communs/CarteStatistique';
 import { BoutonRouge } from '../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
@@ -31,14 +31,11 @@ export const TableauDeBordCommunication: React.FC = () => {
             <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-indigo-700 text-white">
               {traduire('role_charge_communication')}
             </span>
-            <span className="text-xs text-slate-500 font-medium">Julian Mercer &bull; Communications & Outreach</span>
+            <span className="text-xs text-slate-500 font-medium">Julian Mercer &bull; {traduire('apercuCommunication')}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-            Communications & Public Relations
+            {traduire('apercuCommunication')}
           </h1>
-          <p className="text-sm text-slate-500 mt-0.5">
-            Broadcast official circulars, urgent campus alerts, and parent dispatches.
-          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <BoutonRouge
@@ -53,29 +50,29 @@ export const TableauDeBordCommunication: React.FC = () => {
         <CarteStatistique
           titre={traduire('bulletinsActifs')}
           valeur={listeAnnonces.length}
-          sousTitre="Published announcements"
+          sousTitre={traduire('publieesCeTrimestre')}
           icone={Radio}
           identifiant="comm-carte-bulletins"
         />
         <CarteStatistique
           titre={traduire('diffusionsParents')}
           valeur={parentsCount}
-          sousTitre="Delivered to family portals"
+          sousTitre={traduire('notificationsEnvoyees')}
           icone={Users}
           identifiant="comm-carte-parents"
         />
         <CarteStatistique
           titre={traduire('alertesUrgentes')}
           valeur={alertesUrgentes}
-          sousTitre="Critical priority dispatches"
+          sousTitre={traduire('alertesCampusTitre')}
           icone={ShieldAlert}
           variation={{ texte: "Live broadcast", positive: true }}
           identifiant="comm-carte-urgentes"
         />
         <CarteStatistique
-          titre="Engagement Index"
-          valeur="94.8%"
-          sousTitre="Read receipt verification"
+          titre={traduire('tauxOuvertureSMS')}
+          valeur="98.5%"
+          sousTitre={traduire('notificationsEnvoyees')}
           icone={Megaphone}
           identifiant="comm-carte-engagement"
         />
@@ -86,10 +83,10 @@ export const TableauDeBordCommunication: React.FC = () => {
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
               <h2 className="text-base font-bold text-slate-900">{traduire('diffusionsRecentes')}</h2>
-              <p className="text-xs text-slate-500">Live memos distributed to campus channels</p>
+              <p className="text-xs text-slate-500">{traduire('descriptionCommunication')}</p>
             </div>
             <BoutonRouge
-              texte="Publish Notice"
+              texte={traduire('publierAnnonce')}
               variante="secondaire"
               taille="petit"
               onClick={() => naviguer(CHEMINS_APPLICATION.COMMUNICATION)}
@@ -111,7 +108,7 @@ export const TableauDeBordCommunication: React.FC = () => {
                       {annonce.priorite}
                     </span>
                     <span className="text-xs text-slate-500 font-semibold">
-                      Target: <span className="uppercase text-red-600 font-bold">{annonce.cible}</span>
+                      {traduire('publicCible')} <span className="uppercase text-red-600 font-bold">{annonce.cible}</span>
                     </span>
                   </div>
                   <span className="text-[11px] text-slate-400">{annonce.datePublication}</span>
@@ -126,33 +123,33 @@ export const TableauDeBordCommunication: React.FC = () => {
         <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h2 className="text-base font-bold text-slate-900">Audience Coverage</h2>
+              <h2 className="text-base font-bold text-slate-900">{traduire('syntheseCommunications')}</h2>
               <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                Active Channels
+                {traduire('actif')}
               </span>
             </div>
 
             <div className="space-y-3 mt-3 text-xs">
               <div className="p-3 rounded-lg border border-slate-100 bg-slate-50">
                 <div className="flex justify-between font-bold text-slate-900">
-                  <span>Parent Feeds & SMS</span>
-                  <span className="text-emerald-700">100% Active</span>
+                  <span>{traduire('diffusionsParents')}</span>
+                  <span className="text-emerald-700">100% {traduire('actif')}</span>
                 </div>
-                <p className="text-[11px] text-slate-500 mt-1">Instant delivery to registered guardians</p>
+                <p className="text-[11px] text-slate-500 mt-1">{traduire('notificationsEnvoyees')}</p>
               </div>
               <div className="p-3 rounded-lg border border-slate-100 bg-slate-50">
                 <div className="flex justify-between font-bold text-slate-900">
-                  <span>Student & Faculty Feeds</span>
-                  <span className="text-emerald-700">100% Active</span>
+                  <span>{traduire('fluxAnnonces')}</span>
+                  <span className="text-emerald-700">100% {traduire('actif')}</span>
                 </div>
-                <p className="text-[11px] text-slate-500 mt-1">Synced to student timetables and dashboards</p>
+                <p className="text-[11px] text-slate-500 mt-1">{traduire('descriptionCommunication')}</p>
               </div>
             </div>
           </div>
 
           <div className="mt-4 pt-3 border-t border-slate-100">
             <BoutonRouge
-              texte="Open Communications Desk"
+              texte={traduire('module_communication')}
               variante="secondaire"
               largeurTotale
               onClick={() => naviguer(CHEMINS_APPLICATION.COMMUNICATION)}

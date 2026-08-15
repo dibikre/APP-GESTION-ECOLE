@@ -7,7 +7,7 @@ import {
   Plus,
   Trash2,
   CheckCircle,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 import { CLASSES_SECONDAIRE } from '../../../modeles/classesAcademiques';

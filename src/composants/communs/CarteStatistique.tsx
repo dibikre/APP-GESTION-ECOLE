@@ -1,11 +1,11 @@
 import React from 'react';
-import { LucideIcon } from 'lucide-react';
+import { RenduIcone, TypeIcone } from './Icone';
 
 interface ProprietesCarteStatistique {
   titre: string;
   valeur: string | number;
   sousTitre?: string;
-  icone: LucideIcon;
+  icone: TypeIcone;
   variation?: {
     texte: string;
     positive: boolean;
@@ -17,7 +17,7 @@ export const CarteStatistique: React.FC<ProprietesCarteStatistique> = ({
   titre,
   valeur,
   sousTitre,
-  icone: Icone,
+  icone,
   variation,
   identifiant,
 }) => {
@@ -26,11 +26,13 @@ export const CarteStatistique: React.FC<ProprietesCarteStatistique> = ({
       id={identifiant}
       className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:border-slate-300 transition-colors flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{titre}</span>
+      <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0">
-          <Icone className="w-5 h-5" />
+          <RenduIcone icone={icone} className="w-5 h-5" />
         </div>
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-800 underline decoration-black decoration-2 underline-offset-4">
+          {titre}
+        </span>
       </div>
       <div className="mt-4">
         <div className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">{valeur}</div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { LucideIcon } from 'lucide-react';
+import { RenduIcone, TypeIcone } from './Icone';
 
 interface ProprietesBoutonRouge extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   texte: string;
-  icone?: LucideIcon;
+  icone?: TypeIcone;
   variante?: 'primaire' | 'secondaire' | 'danger_bordure';
   taille?: 'petit' | 'moyen' | 'grand';
   largeurTotale?: boolean;
@@ -11,7 +11,7 @@ interface ProprietesBoutonRouge extends React.ButtonHTMLAttributes<HTMLButtonEle
 
 export const BoutonRouge: React.FC<ProprietesBoutonRouge> = ({
   texte,
-  icone: Icone,
+  icone,
   variante = 'primaire',
   taille = 'moyen',
   largeurTotale = false,
@@ -41,7 +41,7 @@ export const BoutonRouge: React.FC<ProprietesBoutonRouge> = ({
       className={`inline-flex items-center justify-center gap-2 rounded-lg cursor-pointer transition-all select-none disabled:opacity-50 disabled:cursor-not-allowed ${stylesTaille[taille]} ${stylesVariante[variante]} ${largeurTotale ? 'w-full' : ''} ${className}`}
       {...resteProprietes}
     >
-      {Icone && <Icone className="w-4 h-4 shrink-0 text-current" />}
+      {icone && <RenduIcone icone={icone} className="w-4 h-4 shrink-0 text-current" />}
       <span className="whitespace-nowrap font-medium">{texte}</span>
     </button>
   );

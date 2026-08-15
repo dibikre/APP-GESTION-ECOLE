@@ -9,7 +9,7 @@ import {
   Key,
   Coins,
   DollarSign,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { SelecteurDevise } from '../../../composants/communs/SelecteurDevise';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';

@@ -7,7 +7,7 @@ import {
   Mail,
   Phone,
   Search,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 import { CLASSES_SECONDAIRE } from '../../../modeles/classesAcademiques';
 

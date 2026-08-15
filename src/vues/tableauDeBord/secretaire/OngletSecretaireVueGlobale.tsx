@@ -6,12 +6,12 @@ import {
   CreditCard,
   Clock,
   FileCheck,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { CarteStatistique } from '../../../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletSecretaireVueGlobale: React.FC = () => {
-  const { listeEleves, listeFactures, listeDemandesDocs } = utiliserAcademie();
+  const { listeEleves, listeFactures, listeDemandesDocs, traduire } = utiliserAcademie();
 
   const totalFacture = listeFactures.reduce((s, f) => s + f.montantTotal, 0);
   const totalEncaisse = listeFactures.reduce((s, f) => s + f.montantPaye, 0);
@@ -22,31 +22,31 @@ export const OngletSecretaireVueGlobale: React.FC = () => {
       {/* Administrative KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CarteStatistique
-          titre="New Admissions YTD"
+          titre={traduire('kpiDossiersInscrits')}
           valeur="24"
-          sousTitre="4 Pending review"
+          sousTitre={traduire('kpiDossiersInscritsSousTitre')}
           icone={UserPlus}
           variation={{ texte: "+12.5%", positive: true }}
           identifiant="sec-kpi-inscriptions"
         />
         <CarteStatistique
-          titre="Active Student Registry"
+          titre={traduire('kpiElevesInscrits')}
           valeur={listeEleves.length}
-          sousTitre="All enrolled cohorts"
+          sousTitre={traduire('kpiTauxPresenceGlobaleSousTitre')}
           icone={Users}
           identifiant="sec-kpi-eleves"
         />
         <CarteStatistique
-          titre="Fee Collection Rate"
+          titre={traduire('indicateurRecouvrement')}
           valeur={`${tauxEncaissement}%`}
-          sousTitre={`$${totalEncaisse.toLocaleString()} settled`}
+          sousTitre={`$${totalEncaisse.toLocaleString()} ${traduire('recettesEncaisses')}`}
           icone={CreditCard}
           identifiant="sec-kpi-finances"
         />
         <CarteStatistique
-          titre="Pending Doc Requests"
+          titre={traduire('kpiDemandesDocs')}
           valeur={listeDemandesDocs.filter((d) => d.statut === 'en_attente').length}
-          sousTitre="Certificates & Transcripts"
+          sousTitre={traduire('kpiDemandesDocsSousTitre')}
           icone={FileCheck}
           identifiant="sec-kpi-docs"
         />
@@ -56,8 +56,8 @@ export const OngletSecretaireVueGlobale: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-            <h4 className="text-sm font-bold text-slate-900">Today’s Admissions & Administrative Activity</h4>
-            <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">Active Term</span>
+            <h4 className="text-sm font-bold text-slate-900">{traduire('dernieresInscriptions')}</h4>
+            <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">{traduire('anneeAcademiqueLibelle')}</span>
           </div>
 
           <div className="space-y-3 mt-4 text-xs">
@@ -86,8 +86,8 @@ export const OngletSecretaireVueGlobale: React.FC = () => {
         <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <h4 className="text-sm font-bold text-slate-900">Pending Certificates</h4>
-              <span className="text-xs font-bold text-slate-500">{listeDemandesDocs.length} Requests</span>
+              <h4 className="text-sm font-bold text-slate-900">{traduire('guichetDemandes')}</h4>
+              <span className="text-xs font-bold text-slate-500">{listeDemandesDocs.length} {traduire('dossiersAValider')}</span>
             </div>
             <div className="space-y-2.5 mt-3 text-xs">
               {listeDemandesDocs.map((d) => (

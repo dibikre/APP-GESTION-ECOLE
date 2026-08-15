@@ -1,0 +1,132 @@
+export const TRADUCTIONS_FR_TABLEAUX_ROLES = {
+  // En-têtes & Sections
+  menuEspaceTravail: 'Menu de l’Espace',
+  apercuFinancierEconome: 'Synthèse Financière & Économat',
+  bureauEconome: 'Bureau de l’Économe & Trésorerie',
+  vueEnsembleDirection: 'Vue d’Ensemble Direction',
+  vueEnsembleEnseignement: 'Espace & Vue d’Ensemble Enseignant',
+  vueEnsembleEleve: 'Tableau de Bord Élève',
+  vueEnsembleParent: 'Portail Parent & Suivi',
+  vueEnsembleSecretariat: 'Accueil & Guichet Scolarité',
+  apercuRH: 'Ressources Humaines & Personnel',
+  apercuBibliotheque: 'Bibliothèque & Ressources Documentaires',
+  apercuCommunication: 'Communications & Relations Publiques',
+
+  // KPIs & Cartes
+  kpiElevesInscrits: 'Élèves Inscrits',
+  kpiElevesInscritsSousTitre: 'Actifs sur 4 cohortes',
+  kpiTauxPresence: 'Taux de Présence',
+  kpiTauxPresenceSousTitre: 'Assiduité quotidienne du campus',
+  kpiMoyenneAcademique: 'Moyenne Académique',
+  kpiMoyenneAcademiqueSousTitre: 'Moyenne générale de l’établissement',
+  kpiRatioEleveProf: 'Ratio Élèves / Professeur',
+  kpiCorpsEnseignantMembres: 'Membres du corps enseignant',
+
+  // Indicateurs Financiers
+  revenuTotalFacture: 'Revenu Total Facturé',
+  recettesEncaisses: 'Recettes Encaissées',
+  depensesFonctionnement: 'Dépenses de Fonctionnement',
+  soldeNetTresorerie: 'Solde Net de Trésorerie',
+  tresorerieSaine: 'Trésorerie saine',
+  tauxRecouvrementPourcentage: 'taux de recouvrement',
+  salairesEtMaintenance: 'Salaires & maintenance',
+  anneeAcademiqueLibelle: 'Année Académique 2025-2026',
+
+  // Graphiques et Alertes
+  performanceCohortesTitre: 'Performance & Assiduité par Cohorte',
+  performanceCohortesSousTitre: 'Moyenne comparative et taux de présence',
+  alertesInstitutionnellesCritiques: 'Alertes Institutionnelles Critiques',
+  actionRequise: 'Action Requise',
+  trimestre2: 'Trimestre 2',
+  comptesEnRetardTitre: '3 Comptes en retard de paiement',
+  comptesEnRetardDesc: 'Total de 3 300 $ en attente de paiement pour le trimestre 2.',
+  moyenne: 'Moyenne',
+  assiduite: 'Présence',
+
+  // Détails Comptabilité
+  fraisTrimestre2: 'Scolarité & Frais Trimestre 2',
+  recettesBancairesVerifiees: 'Reçus bancaires vérifiés',
+  facturesElevesEnAttente: 'factures élèves en attente',
+  indicateurRecouvrement: 'Indicateur de recouvrement',
+  objectif85: 'Objectif 85%',
+  facturesImpayeesSousTitre: 'Comptes élèves nécessitant un recouvrement ou un rappel',
+  derniersPaiementsEncaisses: 'Derniers Paiements Encaissés',
+  journalPaiementsRecents: 'Reçus de paiement certifiés',
+  repartitionDepenses: 'Répartition des Dépenses par Département',
+  budgetSalairesOps: 'Masse salariale et charges d’exploitation',
+
+  // RH & Personnel
+  effectifTotalSalaries: 'Personnel Actif',
+  contratsEnCours: 'Contrats à durée déterminée et indéterminée',
+  masseSalarialeTitre: 'Masse Salariale Mensuelle',
+  paieProchainVirement: 'Prochain virement dans 5 jours',
+  congesEnAttenteTitre: 'Demandes de Congé en Attente',
+  dossiersAValider: 'Dossiers à valider par la direction',
+  recrutementsEnCours: 'Recrutements Ouverts',
+  postesVacants: 'Postes d’enseignants et administratifs',
+
+  // Bibliothèque
+  fondsDocumentaireTitre: 'Fonds Documentaire Total',
+  titresReferences: 'Titres et manuels répertoriés',
+  exemplairesDispoTitre: 'Volumes Disponibles',
+  enRayonActuellement: 'Prêts pour emprunt immédiat',
+  empruntsActifsTitre: 'Emprunts en Cours',
+  retoursAttendusCeMois: 'Retours attendus ce mois',
+  retardsRestitutionTitre: 'Retards de Restitution',
+  rappelsEnvoyes: 'Rappels automatiques transmis',
+
+  // Communications
+  circulairesOfficiellesTitre: 'Circulaires Officielles',
+  publieesCeTrimestre: 'Publiées ce trimestre',
+  tauxOuvertureSMS: 'Taux de Réception SMS',
+  notificationsEnvoyees: 'Parents et tuteurs notifiés',
+  alertesCampusTitre: 'Alertes de Sécurité',
+  incidentsSignales: 'Aucun incident majeur à ce jour',
+
+  // Enseignants / Professeur
+  kpiElevesAssignes: 'Élèves Assignés',
+  kpiMoyenneClasse: 'Moyenne de la Classe',
+  kpiPresenceAppel: 'Présence à l’Appel',
+  kpiHeuresHebdo: 'Heures d’Enseignement',
+  kpiHeuresHebdoSousTitre: '4 Modules de cours',
+  kpiPresenceAppelSousTitre: 'Appel quotidien du matin',
+  emploiDuTempsEnseignant: 'Emploi du Temps d’Enseignement',
+  emploiDuTempsEnseignantDesc: 'Prochains cours et séances en laboratoire',
+  tachesPedaPrioritaires: 'Tâches Pédagogiques Prioritaires',
+  enAttenteEvaluation: 'en attente',
+
+  // Élève
+  kpiMoyenneEleve: 'Ma Moyenne Actuelle',
+  kpiRangClasse: 'Rang dans la Classe',
+  kpiRangClasseSousTitre: 'Top 5% de la promotion',
+  kpiDevoirsRendus: 'Devoirs Complétés',
+  kpiDevoirsRendusSousTitre: '100% à ce jour',
+  kpiLivresEmpruntes: 'Livres en Emprunt',
+  kpiLivresEmpruntesSousTitre: 'Aucun retard enregistré',
+  mesProchainsCours: 'Mes Prochains Cours',
+  mesProchainsCoursDesc: 'Horaires de classe et salles assignées',
+  prochainsDevoirsExamens: 'Prochains Devoirs & Examens',
+
+  // Parent
+  kpiMoyenneEnfant: 'Moyenne Générale Enfant',
+  kpiAssiduiteEnfant: 'Taux de Présence Enfant',
+  kpiAssiduiteEnfantSousTitre: '1 absence justifiée',
+  kpiSoldeFrais: 'Solde Frais de Scolarité',
+  kpiSoldeFraisSousTitre: 'Trimestre 2 en cours',
+  kpiMessagesEcole: 'Messages Établissement',
+  kpiMessagesEcoleSousTitre: 'Dernière circulaire hier',
+  bulletinTrimestriel: 'Bulletin Trimestriel',
+  calendrierRendezVous: 'Demande de Rendez-vous Enseignant',
+
+  // Secrétaire
+  kpiDossiersInscrits: 'Dossiers Inscrits',
+  kpiDossiersInscritsSousTitre: 'Inscriptions vérifiées',
+  kpiDemandesDocs: 'Demandes de Documents',
+  kpiDemandesDocsSousTitre: 'Certificats et relevés',
+  kpiAlertesDiscipline: 'Signalements Disciplinaires',
+  kpiAlertesDisciplineSousTitre: 'Incidents enregistrés',
+  kpiTauxPresenceGlobale: 'Assiduité Campus',
+  kpiTauxPresenceGlobaleSousTitre: 'Toutes classes confondues',
+  dernieresInscriptions: 'Dernières Inscriptions Traitées',
+  guichetDemandes: 'Guichet des Demandes Administratives',
+};

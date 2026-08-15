@@ -9,7 +9,7 @@ import {
   Check,
   X,
   Award,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 

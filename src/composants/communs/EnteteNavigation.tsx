@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  GraduationCap, Search, Bell, Shield, BookOpen, Briefcase, Users,
-  CreditCard, Building2, Megaphone, Menu, ChevronDown, Languages, ClipboardList,
-  UserCheck,
-} from 'lucide-react';
+import { Icone } from './Icone';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
 import { RoleUtilisateur } from '../../modeles/types';
 import { obtenirCheminTableauDeBordParRole } from '../../routes/cheminsApplication';
@@ -33,21 +29,20 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
   const rolesDisponibles: {
     cle: RoleUtilisateur;
     libelleCle: Parameters<typeof traduire>[0];
-    icone: React.ElementType;
+    icone: string;
   }[] = [
-    { cle: 'administrateur', libelleCle: 'role_administrateur', icone: Shield },
-    { cle: 'professeur', libelleCle: 'role_professeur', icone: BookOpen },
-    { cle: 'eleve', libelleCle: 'role_eleve', icone: GraduationCap },
-    { cle: 'parent', libelleCle: 'role_parent', icone: Users },
-    { cle: 'secretaire', libelleCle: 'role_secretaire', icone: ClipboardList },
-    { cle: 'comptable', libelleCle: 'role_comptable', icone: CreditCard },
-    { cle: 'ressources_humaines', libelleCle: 'role_ressources_humaines', icone: Briefcase },
-    { cle: 'bibliothecaire', libelleCle: 'role_bibliothecaire', icone: Building2 },
-    { cle: 'charge_communication', libelleCle: 'role_charge_communication', icone: Megaphone },
+    { cle: 'administrateur', libelleCle: 'role_administrateur', icone: 'lucide:shield' },
+    { cle: 'professeur', libelleCle: 'role_professeur', icone: 'lucide:book-open' },
+    { cle: 'eleve', libelleCle: 'role_eleve', icone: 'lucide:graduation-cap' },
+    { cle: 'parent', libelleCle: 'role_parent', icone: 'lucide:users' },
+    { cle: 'secretaire', libelleCle: 'role_secretaire', icone: 'lucide:clipboard-list' },
+    { cle: 'comptable', libelleCle: 'role_comptable', icone: 'lucide:credit-card' },
+    { cle: 'ressources_humaines', libelleCle: 'role_ressources_humaines', icone: 'lucide:briefcase' },
+    { cle: 'bibliothecaire', libelleCle: 'role_bibliothecaire', icone: 'lucide:building-2' },
+    { cle: 'charge_communication', libelleCle: 'role_charge_communication', icone: 'lucide:megaphone' },
   ];
 
   const roleActuel = rolesDisponibles.find((r) => r.cle === roleActif) || rolesDisponibles[0];
-  const IconeRole = roleActuel.icone;
 
   const changerRoleEtNaviguer = (role: RoleUtilisateur) => {
     changerRoleActif(role);
@@ -66,7 +61,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
               className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
               aria-label="Toggle navigation menu"
             >
-              <Menu className="w-6 h-6" />
+              <Icone icone="lucide:menu" className="w-6 h-6" />
             </button>
 
             <div
@@ -74,7 +69,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
               onClick={() => naviguer(obtenirCheminTableauDeBordParRole(roleActif))}
             >
               <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-xs">
-                <GraduationCap className="w-6 h-6" />
+                <Icone icone="lucide:graduation-cap" className="w-6 h-6" />
               </div>
               <div className="hidden sm:block">
                 <span className="font-bold text-slate-900 text-base leading-tight block">
@@ -89,7 +84,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
 
           <div className="flex-1 max-w-md hidden md:block">
             <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Icone icone="lucide:search" className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={termeRecherche}
@@ -115,7 +110,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
-                <Languages className="w-3 h-3" />
+                <Icone icone="lucide:languages" className="w-3 h-3" />
                 FR
               </button>
               <button
@@ -127,7 +122,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
-                <Languages className="w-3 h-3" />
+                <Icone icone="lucide:languages" className="w-3 h-3" />
                 EN
               </button>
             </div>
@@ -140,7 +135,7 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                 className="relative p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="View announcements"
               >
-                <Bell className="w-5 h-5" />
+                <Icone icone="lucide:bell" className="w-5 h-5" />
                 {listeAnnonces.length > 0 && (
                   <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-600" />
                 )}
@@ -182,9 +177,9 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                 onClick={() => setMenuRoleOuvert(!menuRoleOuvert)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-900 text-xs font-semibold min-h-[44px] transition-colors cursor-pointer"
               >
-                <IconeRole className="w-4 h-4 text-red-600" />
+                <Icone icone={roleActuel.icone} className="w-4 h-4 text-red-600" />
                 <span className="hidden sm:inline">{traduire(roleActuel.libelleCle)}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                <Icone icone="lucide:chevron-down" className="w-3.5 h-3.5 text-slate-500" />
               </button>
 
               {menuRoleOuvert && (
@@ -193,7 +188,6 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                     {traduire('changerRole')}
                   </div>
                   {rolesDisponibles.map((r) => {
-                    const RoleIcone = r.icone;
                     const estSelectionne = r.cle === roleActif;
                     return (
                       <button
@@ -205,10 +199,10 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <RoleIcone className={`w-4 h-4 ${estSelectionne ? 'text-red-600' : 'text-slate-500'}`} />
+                          <Icone icone={r.icone} className={`w-4 h-4 ${estSelectionne ? 'text-red-600' : 'text-slate-500'}`} />
                           <span>{traduire(r.libelleCle)}</span>
                         </div>
-                        {estSelectionne && <UserCheck className="w-3.5 h-3.5 text-red-600" />}
+                        {estSelectionne && <Icone icone="lucide:user-check" className="w-3.5 h-3.5 text-red-600" />}
                       </button>
                     );
                   })}

@@ -7,7 +7,7 @@ import {
   AlertCircle,
   Plus,
   ArrowRightLeft,
-} from 'lucide-react';
+} from '../../composants/communs/IconesAcademie';
 import { CarteStatistique } from '../../composants/communs/CarteStatistique';
 import { BoutonRouge } from '../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
@@ -36,14 +36,11 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
             <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-teal-700 text-white">
               {traduire('role_bibliothecaire')}
             </span>
-            <span className="text-xs text-slate-500 font-medium">Hannah Campbell &bull; Library & Resource Center</span>
+            <span className="text-xs text-slate-500 font-medium">Hannah Campbell &bull; {traduire('apercuBibliotheque')}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-            Library & Learning Resources
+            {traduire('apercuBibliotheque')}
           </h1>
-          <p className="text-sm text-slate-500 mt-0.5">
-            Manage book cataloging, patron checkout loans, and shelf inventory.
-          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <BoutonRouge
@@ -64,28 +61,28 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
         <CarteStatistique
           titre={traduire('fondsDocumentaire')}
           valeur={totalLivres}
-          sousTitre="Catalogued volumes"
+          sousTitre={traduire('titresReferences')}
           icone={BookOpen}
           identifiant="bib-carte-total"
         />
         <CarteStatistique
           titre={traduire('disponiblesEnRayon')}
           valeur={totalDisponibles}
-          sousTitre="Available for immediate loan"
+          sousTitre={traduire('enRayonActuellement')}
           icone={Building2}
           identifiant="bib-carte-dispo"
         />
         <CarteStatistique
           titre={traduire('empruntsEnCours')}
           valeur={empruntsEnCours.length}
-          sousTitre="Checked out to patrons"
+          sousTitre={traduire('retoursAttendusCeMois')}
           icone={Bookmark}
           identifiant="bib-carte-emprunts"
         />
         <CarteStatistique
           titre={traduire('empruntsEnRetardTitre')}
           valeur={empruntsEnRetard.length}
-          sousTitre="Overdue return notifications"
+          sousTitre={traduire('rappelsEnvoyes')}
           icone={AlertCircle}
           variation={{ texte: "Urgent", positive: false }}
           identifiant="bib-carte-retard"
@@ -97,10 +94,10 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
               <h2 className="text-base font-bold text-slate-900">{traduire('suiviEmprunts')}</h2>
-              <p className="text-xs text-slate-500">Active circulation and borrowing records</p>
+              <p className="text-xs text-slate-500">{traduire('menu_emprunts_retours')}</p>
             </div>
             <BoutonRouge
-              texte="Catalog Registry"
+              texte={traduire('voirTout')}
               variante="secondaire"
               taille="petit"
               onClick={() => naviguer(CHEMINS_APPLICATION.BIBLIOTHEQUE)}
@@ -113,7 +110,7 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">{emprunt.titreLivre}</h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Patron: <strong className="text-slate-700">{emprunt.emprunteurNom}</strong> ({emprunt.emprunteurType}) &bull; Due: {emprunt.dateRetourPrevue}
+                    {traduire('emprunteur')}: <strong className="text-slate-700">{emprunt.emprunteurNom}</strong> ({emprunt.emprunteurType}) &bull; {traduire('dateRetourPrevue')}: {emprunt.dateRetourPrevue}
                   </p>
                 </div>
                 <div className="text-right">
@@ -132,7 +129,7 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
                       onClick={() => retournerLivreEmprunte(emprunt.identifiant)}
                       className="text-xs font-bold text-red-600 hover:underline cursor-pointer"
                     >
-                      Process Return
+                      {traduire('rendreLivre')}
                     </button>
                   )}
                 </div>
@@ -146,7 +143,7 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <h2 className="text-base font-bold text-slate-900">{traduire('titresPopulaires')}</h2>
               <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                Inventory
+                {traduire('catalogueLivres')}
               </span>
             </div>
 
@@ -155,7 +152,7 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
                 <div key={livre.identifiant} className="p-3 rounded-lg border border-slate-100 bg-slate-50/70 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-slate-900">{livre.titre}</span>
-                    <span className="font-semibold text-emerald-700">{livre.exemplairesDisponibles} avail</span>
+                    <span className="font-semibold text-emerald-700">{livre.exemplairesDisponibles} {traduire('disponible')}</span>
                   </div>
                   <p className="text-[11px] text-slate-500 mt-0.5">{livre.auteur} &bull; {livre.emplacement}</p>
                 </div>
@@ -165,7 +162,7 @@ export const TableauDeBordBibliothecaire: React.FC = () => {
 
           <div className="mt-4 pt-3 border-t border-slate-100">
             <BoutonRouge
-              texte="Open Library Desk"
+              texte={traduire('catalogueLivres')}
               variante="secondaire"
               largeurTotale
               onClick={() => naviguer(CHEMINS_APPLICATION.BIBLIOTHEQUE)}

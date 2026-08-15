@@ -43,7 +43,7 @@ La plateforme propose 9 perspectives de rôles dédiées avec des autorisations 
 - **Framework Frontend :** React 19 + TypeScript
 - **Moteur de Routage :** React Router DOM (Navigation avec sous-onglets)
 - **Système de Design et Styles :** Tailwind CSS (Thème clair, boutons rouges d'action, texte sombre lisible, conception réactive mobile-first)
-- **Icônes Graphiques :** Lucide React (composants d'icônes vectorielles purs, aucun émoji)
+- **Icônes Graphiques :** Iconify React (`@iconify/react` avec le jeu d'icônes https://icon-sets.iconify.design, aucun émoji)
 - **Modèle d'Architecture :** MVC (Modèle - Vue - Contrôleur)
   - `src/modeles/` : Types de données, entités du domaine et jeux de données initiaux.
   - `src/vues/` : Vues de pages et composants d'onglets modulaires.

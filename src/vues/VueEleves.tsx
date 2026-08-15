@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPlus } from 'lucide-react';
+import { UserPlus } from '../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../controleurs/contexteAcademie';
 import { TableauEleves } from './eleves/TableauEleves';
@@ -23,9 +23,6 @@ export const VueEleves: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             {traduire('titreEleves')}
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
-            {traduire('descriptionEleves')}
-          </p>
         </div>
         <BoutonRouge
           texte={traduire('inscrireNouvelEleve')}

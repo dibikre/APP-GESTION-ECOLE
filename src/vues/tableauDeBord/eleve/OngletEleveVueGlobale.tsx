@@ -6,43 +6,43 @@ import {
   AlertCircle,
   Megaphone,
   Download,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { CarteStatistique } from '../../../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletEleveVueGlobale: React.FC = () => {
-  const { listeNotes, listeAnnonces, listeDevoirs } = utiliserAcademie();
+  const { listeNotes, listeAnnonces, listeDevoirs, traduire } = utiliserAcademie();
 
   return (
     <div className="space-y-6">
       {/* Student Top KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CarteStatistique
-          titre="Cumulative GPA"
+          titre={traduire('kpiMoyenneEleve')}
           valeur="91.4%"
-          sousTitre="Class Rank: #2 / 28"
+          sousTitre={traduire('kpiRangClasseSousTitre')}
           icone={Award}
           variation={{ texte: "+1.8%", positive: true }}
           identifiant="eleve-kpi-gpa"
         />
         <CarteStatistique
-          titre="Term Attendance"
+          titre={traduire('kpiAssiduiteEnfant')}
           valeur="98.5%"
-          sousTitre="0 Unexcused absences"
+          sousTitre="0 absences"
           icone={CalendarCheck}
           identifiant="eleve-kpi-presence"
         />
         <CarteStatistique
-          titre="Enrolled Courses"
+          titre={traduire('coursInscrits')}
           valeur="8"
-          sousTitre="Science Track Major"
+          sousTitre="Science Track"
           icone={BookOpen}
           identifiant="eleve-kpi-cours"
         />
         <CarteStatistique
-          titre="Pending Homework"
+          titre={traduire('devoirsEnAttente')}
           valeur={listeDevoirs.length}
-          sousTitre="2 Due this week"
+          sousTitre={traduire('kpiDevoirsRendusSousTitre')}
           icone={AlertCircle}
           identifiant="eleve-kpi-devoirs"
         />
@@ -53,10 +53,10 @@ export const OngletEleveVueGlobale: React.FC = () => {
         <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Recent Assessment Scores</h3>
-              <p className="text-xs text-slate-500">Continuous assessments and quizzes for Term 2</p>
+              <h3 className="text-sm font-bold text-slate-900">{traduire('evaluationsRecentes')}</h3>
+              <p className="text-xs text-slate-500">{traduire('evaluationsDesc')}</p>
             </div>
-            <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">Term 2</span>
+            <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">{traduire('trimestre2')}</span>
           </div>
 
           <div className="mt-4 space-y-3">
@@ -84,7 +84,7 @@ export const OngletEleveVueGlobale: React.FC = () => {
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                 <Megaphone className="w-4 h-4 text-red-600" />
-                School Bulletins
+                {traduire('circulairesOfficiellesTitre')}
               </h3>
             </div>
 

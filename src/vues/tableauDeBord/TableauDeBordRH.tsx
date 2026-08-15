@@ -8,7 +8,7 @@ import {
   UserPlus,
   Check,
   X,
-} from 'lucide-react';
+} from '../../composants/communs/IconesAcademie';
 import { CarteStatistique } from '../../composants/communs/CarteStatistique';
 import { BoutonRouge } from '../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
@@ -35,14 +35,11 @@ export const TableauDeBordRH: React.FC = () => {
             <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-amber-600 text-white">
               {traduire('role_ressources_humaines')}
             </span>
-            <span className="text-xs text-slate-500 font-medium">Clara Bennett &bull; HR & Staffing Office</span>
+            <span className="text-xs text-slate-500 font-medium">Clara Bennett &bull; {traduire('apercuRH')}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-            Human Resources & Staffing
+            {traduire('apercuRH')}
           </h1>
-          <p className="text-sm text-slate-500 mt-0.5">
-            Oversee staff contracts, process time-off requests, and audit monthly payroll.
-          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <BoutonRouge
@@ -63,31 +60,31 @@ export const TableauDeBordRH: React.FC = () => {
         <CarteStatistique
           titre={traduire('personnelActif')}
           valeur={listeEmployes.length}
-          sousTitre="Permanent & contracted staff"
+          sousTitre={traduire('contratsEnCours')}
           icone={Users}
           identifiant="rh-carte-effectif"
         />
         <CarteStatistique
           titre={traduire('masseSalarialeMensuelle')}
           valeur={`$${masseSalariale.toLocaleString()}`}
-          sousTitre="Monthly staff disbursements"
+          sousTitre={traduire('paieProchainVirement')}
           icone={DollarSign}
           identifiant="rh-carte-payroll"
         />
         <CarteStatistique
           titre={traduire('demandesAValider')}
           valeur={congesEnAttente.length}
-          sousTitre="Action required"
+          sousTitre={traduire('dossiersAValider')}
           icone={CalendarCheck}
           variation={{ texte: "Priority", positive: false }}
           identifiant="rh-carte-conges"
         />
         <CarteStatistique
-          titre="Staff Retention"
-          valeur="98.5%"
-          sousTitre="Institutional stability index"
+          titre={traduire('recrutementsEnCours')}
+          valeur="2"
+          sousTitre={traduire('postesVacants')}
           icone={Briefcase}
-          variation={{ texte: "High", positive: true }}
+          variation={{ texte: "Active", positive: true }}
           identifiant="rh-carte-retention"
         />
       </div>
@@ -97,10 +94,10 @@ export const TableauDeBordRH: React.FC = () => {
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
               <h2 className="text-base font-bold text-slate-900">{traduire('demandesAValider')}</h2>
-              <p className="text-xs text-slate-500">Employee leave and time-off requests</p>
+              <p className="text-xs text-slate-500">{traduire('demandesCongesTitre')}</p>
             </div>
             <BoutonRouge
-              texte="View All Leaves"
+              texte={traduire('voirTout')}
               variante="secondaire"
               taille="petit"
               onClick={() => naviguer(CHEMINS_APPLICATION.RESSOURCES_HUMAINES)}
@@ -118,7 +115,7 @@ export const TableauDeBordRH: React.FC = () => {
                     </span>
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {demande.dateDebut} &rarr; {demande.dateFin} &bull; Reason: {demande.motif}
+                    {demande.dateDebut} &rarr; {demande.dateFin} &bull; {demande.motif}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -129,14 +126,14 @@ export const TableauDeBordRH: React.FC = () => {
                         onClick={() => traiterDemandeConge(demande.identifiant, 'approuve')}
                         className="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 cursor-pointer flex items-center gap-1"
                       >
-                        <Check className="w-3.5 h-3.5" /> Approve
+                        <Check className="w-3.5 h-3.5" /> {traduire('approuver')}
                       </button>
                       <button
                         type="button"
                         onClick={() => traiterDemandeConge(demande.identifiant, 'refuse')}
                         className="px-2.5 py-1 text-xs font-bold rounded-lg bg-red-50 text-red-700 hover:bg-red-100 cursor-pointer flex items-center gap-1"
                       >
-                        <X className="w-3.5 h-3.5" /> Reject
+                        <X className="w-3.5 h-3.5" /> {traduire('rejeter')}
                       </button>
                     </>
                   ) : (
@@ -155,7 +152,7 @@ export const TableauDeBordRH: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <h2 className="text-base font-bold text-slate-900">{traduire('annuairePersonnel')}</h2>
               <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                Active Staff
+                {traduire('personnelActif')}
               </span>
             </div>
 
@@ -174,7 +171,7 @@ export const TableauDeBordRH: React.FC = () => {
 
           <div className="mt-4 pt-3 border-t border-slate-100">
             <BoutonRouge
-              texte="Open Staff Management"
+              texte={traduire('menu_gestion_personnel')}
               variante="secondaire"
               largeurTotale
               onClick={() => naviguer(CHEMINS_APPLICATION.RESSOURCES_HUMAINES)}

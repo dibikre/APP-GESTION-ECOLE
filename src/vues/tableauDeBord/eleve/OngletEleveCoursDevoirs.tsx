@@ -6,7 +6,7 @@ import {
   UploadCloud,
   Clock,
   CheckCircle,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 

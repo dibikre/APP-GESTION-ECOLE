@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { X, LucideIcon } from 'lucide-react';
+import { Icone, RenduIcone } from './Icone';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
 import { obtenirElementsMenuParRole } from '../../modeles/configurationMenus';
 import { CleTraduction } from '../../modeles/traductions';
@@ -58,14 +58,14 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
             onClick={surFermerMenuMobile}
             className="p-1.5 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <Icone icone="lucide:x" className="w-5 h-5" />
           </button>
         </div>
 
         <div className="p-4 flex-1 overflow-y-auto space-y-1.5">
           <div className="px-3 py-2">
             <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Workspace Menu
+              {traduire('menuEspaceTravail')}
             </div>
             <div className="text-xs font-bold text-red-600 mt-0.5 truncate">
               {traduire(cleLibelleRole)}
@@ -74,7 +74,6 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
 
           <div className="pt-1 space-y-1">
             {elementsNavigation.map((item) => {
-              const Icone: LucideIcon = item.icone;
               const estActif = verifierEstActif(item.chemin, item.cle);
 
               return (
@@ -88,7 +87,7 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
                       : 'border-transparent text-slate-700 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
-                  <Icone className={`w-4 h-4 shrink-0 ${estActif ? 'text-red-600' : 'text-slate-500'}`} />
+                  <RenduIcone icone={item.icone} className={`w-4 h-4 shrink-0 ${estActif ? 'text-red-600' : 'text-slate-500'}`} />
                   <span className="truncate">{traduire(item.libelleCle)}</span>
                 </button>
               );

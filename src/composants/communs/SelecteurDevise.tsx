@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Coins, ChevronDown, Check, Globe } from 'lucide-react';
+import { Icone } from './Icone';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
 import { DEVISES_DISPONIBLES, CodeDevise } from '../../modeles/devises';
 
@@ -59,7 +59,7 @@ export const SelecteurDevise: React.FC<ProprietesSelecteurDevise> = ({
                   Sample: {dev.position === 'avant' ? `${dev.symbole}12,500` : `12 500 ${dev.symbole}`}
                 </div>
               </div>
-              {estActif && <Check className="w-4 h-4 text-red-600 shrink-0 ml-2 mt-0.5" />}
+              {estActif && <Icone icone="lucide:check" className="w-4 h-4 text-red-600 shrink-0 ml-2 mt-0.5" />}
             </button>
           );
         })}
@@ -77,9 +77,9 @@ export const SelecteurDevise: React.FC<ProprietesSelecteurDevise> = ({
           className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg border border-slate-200 transition-colors cursor-pointer"
           title="Change institutional currency"
         >
-          <Coins className="w-3.5 h-3.5 text-red-600" />
+          <Icone icone="lucide:coins" className="w-3.5 h-3.5 text-red-600" />
           <span>{deviseActuelle} ({definitionDeviseActuelle.symbole})</span>
-          <ChevronDown className={`w-3 h-3 text-slate-500 transition-transform ${ouvert ? 'rotate-180' : ''}`} />
+          <Icone icone="lucide:chevron-down" className={`w-3 h-3 text-slate-500 transition-transform ${ouvert ? 'rotate-180' : ''}`} />
         </button>
 
         {ouvert && (
@@ -106,7 +106,7 @@ export const SelecteurDevise: React.FC<ProprietesSelecteurDevise> = ({
                   <span className="font-mono font-bold text-[11px]">{dev.code}</span>
                   <span className="text-slate-600">{dev.nom}</span>
                 </div>
-                {dev.code === deviseActuelle && <Check className="w-3.5 h-3.5 text-red-600" />}
+                {dev.code === deviseActuelle && <Icone icone="lucide:check" className="w-3.5 h-3.5 text-red-600" />}
               </button>
             ))}
           </div>
@@ -123,12 +123,12 @@ export const SelecteurDevise: React.FC<ProprietesSelecteurDevise> = ({
         onClick={() => setOuvert(!ouvert)}
         className="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 hover:border-slate-300 rounded-lg text-xs font-bold text-slate-800 shadow-2xs transition-all cursor-pointer"
       >
-        <Coins className="w-4 h-4 text-red-600" />
+        <Icone icone="lucide:coins" className="w-4 h-4 text-red-600" />
         <div className="text-left leading-none">
           <div className="text-[9px] text-slate-400 font-semibold uppercase">Currency</div>
           <div className="text-xs text-slate-900 font-bold">{deviseActuelle} ({definitionDeviseActuelle.symbole})</div>
         </div>
-        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ml-1 ${ouvert ? 'rotate-180' : ''}`} />
+        <Icone icone="lucide:chevron-down" className={`w-3.5 h-3.5 text-slate-400 transition-transform ml-1 ${ouvert ? 'rotate-180' : ''}`} />
       </button>
 
       {ouvert && (
@@ -162,7 +162,7 @@ export const SelecteurDevise: React.FC<ProprietesSelecteurDevise> = ({
                     Example: {dev.position === 'avant' ? `${dev.symbole}100,000` : `100 000 ${dev.symbole}`}
                   </div>
                 </div>
-                {estActif && <Check className="w-4 h-4 text-red-600 shrink-0" />}
+                {estActif && <Icone icone="lucide:check" className="w-4 h-4 text-red-600 shrink-0" />}
               </button>
             );
           })}

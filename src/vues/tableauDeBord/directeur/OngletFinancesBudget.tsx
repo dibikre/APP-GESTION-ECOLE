@@ -7,7 +7,7 @@ import {
   TrendingUp,
   CreditCard,
   Building,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletFinancesBudget: React.FC = () => {

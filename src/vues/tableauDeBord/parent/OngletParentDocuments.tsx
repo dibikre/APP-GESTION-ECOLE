@@ -5,7 +5,7 @@ import {
   Calendar,
   CheckCircle,
   FileCheck,
-} from 'lucide-react';
+} from '../../../composants/communs/IconesAcademie';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
