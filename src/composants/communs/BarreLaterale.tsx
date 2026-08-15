@@ -1,19 +1,9 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Shield,
-  BookOpen,
-  GraduationCap,
-  Users,
-  CreditCard,
-  Briefcase,
-  Building2,
-  Megaphone,
-  X,
-} from 'lucide-react';
+import { X, LucideIcon } from 'lucide-react';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
-import { CHEMINS_APPLICATION, obtenirCheminTableauDeBordParRole } from '../../routes/cheminsApplication';
+import { obtenirElementsMenuParRole } from '../../modeles/configurationMenus';
+import { CleTraduction } from '../../modeles/traductions';
 
 interface ProprietesBarreLaterale {
   menuMobileOuvert: boolean;
@@ -28,78 +18,24 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
   const emplacement = useLocation();
   const naviguer = useNavigate();
 
-  const cheminTableauDeBord = obtenirCheminTableauDeBordParRole(roleActif);
-
-  const elementsNavigation = [
-    {
-      cle: 'tableau_de_bord',
-      chemin: cheminTableauDeBord,
-      estActif: emplacement.pathname.startsWith('/tableau-de-bord'),
-      libelleCle: 'module_tableau_de_bord' as const,
-      icone: LayoutDashboard,
-    },
-    {
-      cle: 'administration',
-      chemin: CHEMINS_APPLICATION.ADMINISTRATION,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.ADMINISTRATION),
-      libelleCle: 'module_administration' as const,
-      icone: Shield,
-    },
-    {
-      cle: 'professeurs',
-      chemin: CHEMINS_APPLICATION.PROFESSEURS,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.PROFESSEURS),
-      libelleCle: 'module_professeurs' as const,
-      icone: BookOpen,
-    },
-    {
-      cle: 'eleves',
-      chemin: CHEMINS_APPLICATION.ELEVES,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.ELEVES),
-      libelleCle: 'module_eleves' as const,
-      icone: GraduationCap,
-    },
-    {
-      cle: 'parents',
-      chemin: CHEMINS_APPLICATION.PARENTS,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.PARENTS),
-      libelleCle: 'module_parents' as const,
-      icone: Users,
-    },
-    {
-      cle: 'comptabilite',
-      chemin: CHEMINS_APPLICATION.COMPTABILITE,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.COMPTABILITE),
-      libelleCle: 'module_comptabilite' as const,
-      icone: CreditCard,
-    },
-    {
-      cle: 'ressources_humaines',
-      chemin: CHEMINS_APPLICATION.RESSOURCES_HUMAINES,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.RESSOURCES_HUMAINES),
-      libelleCle: 'module_ressources_humaines' as const,
-      icone: Briefcase,
-    },
-    {
-      cle: 'bibliotheque',
-      chemin: CHEMINS_APPLICATION.BIBLIOTHEQUE,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.BIBLIOTHEQUE),
-      libelleCle: 'module_bibliotheque' as const,
-      icone: Building2,
-    },
-    {
-      cle: 'communication',
-      chemin: CHEMINS_APPLICATION.COMMUNICATION,
-      estActif: emplacement.pathname.startsWith(CHEMINS_APPLICATION.COMMUNICATION),
-      libelleCle: 'module_communication' as const,
-      icone: Megaphone,
-    },
-  ];
+  const elementsNavigation = obtenirElementsMenuParRole(roleActif);
 
   const naviguerVersChemin = (chemin: string) => {
     naviguer(chemin);
     surFermerMenuMobile();
   };
+
+  const verifierEstActif = (itemChemin: string, itemCle: string): boolean => {
+    if (itemCle === 'tableau_de_bord') {
+      const autresElements = elementsNavigation.filter((el) => el.cle !== 'tableau_de_bord');
+      const correspondAutre = autresElements.some((el) => emplacement.pathname.startsWith(el.chemin));
+      if (correspondAutre) return false;
+      return emplacement.pathname.startsWith('/tableau-de-bord') || emplacement.pathname === '/';
+    }
+    return emplacement.pathname === itemChemin || emplacement.pathname.startsWith(itemChemin);
+  };
+
+  const cleLibelleRole: CleTraduction = `role_${roleActif}` as CleTraduction;
 
   return (
     <>
@@ -111,7 +47,7 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 lg:static lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 lg:top-16 lg:z-30 lg:translate-x-0 ${
           menuMobileOuvert ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -127,29 +63,37 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
         </div>
 
         <div className="p-4 flex-1 overflow-y-auto space-y-1.5">
-          <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-            {traduire('changerRole')}
+          <div className="px-3 py-2">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              Workspace Menu
+            </div>
+            <div className="text-xs font-bold text-red-600 mt-0.5 truncate">
+              {traduire(cleLibelleRole)}
+            </div>
           </div>
 
-          {elementsNavigation.map((item) => {
-            const Icone = item.icone;
+          <div className="pt-1 space-y-1">
+            {elementsNavigation.map((item) => {
+              const Icone: LucideIcon = item.icone;
+              const estActif = verifierEstActif(item.chemin, item.cle);
 
-            return (
-              <button
-                key={item.cle}
-                type="button"
-                onClick={() => naviguerVersChemin(item.chemin)}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold min-h-[44px] transition-all text-left cursor-pointer ${
-                  item.estActif
-                    ? 'bg-red-50 text-red-700 font-bold border-l-4 border-red-600'
-                    : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
-                }`}
-              >
-                <Icone className={`w-4 h-4 shrink-0 ${item.estActif ? 'text-red-600' : 'text-slate-500'}`} />
-                <span>{traduire(item.libelleCle)}</span>
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={item.cle}
+                  type="button"
+                  onClick={() => naviguerVersChemin(item.chemin)}
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold min-h-[44px] transition-all text-left cursor-pointer border-l-4 border-b-2 ${
+                    estActif
+                      ? 'bg-red-50 text-red-700 font-bold border-l-red-600 border-b-red-600 shadow-xs'
+                      : 'border-transparent text-slate-700 hover:bg-slate-100 hover:text-slate-900'
+                  }`}
+                >
+                  <Icone className={`w-4 h-4 shrink-0 ${estActif ? 'text-red-600' : 'text-slate-500'}`} />
+                  <span className="truncate">{traduire(item.libelleCle)}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="p-4 border-t border-slate-200 bg-slate-50">
@@ -165,3 +109,4 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
     </>
   );
 };
+
