@@ -6,7 +6,7 @@ import {
   Download,
   Clock,
   UserCheck,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletProfEspacePersonnel: React.FC = () => {

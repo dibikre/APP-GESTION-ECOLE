@@ -1,112 +1,114 @@
-# Système de Gestion Académique
+# Academic Management System (Systeme de Gestion Academique)
 
-Un système complet et professionnel de gestion scolaire et académique conçu pour les établissements d'enseignement primaire, secondaire et supérieur. L'application intègre des tableaux de bord multi-rôles, la gestion des dossiers scolaires, la facturation des frais de scolarité, les ressources humaines et les fiches de paie, la circulation en bibliothèque, le suivi des présences et la communication sur le campus.
+A comprehensive, enterprise-grade School and Academic Management System designed for educational institutions. The application features multi-role dashboards, student records, fee and tuition billing, human resources and payroll tracking, library circulation, attendance tracking, and campus communications.
 
 ---
 
-## Remarque Importante concernant le Backend
+## Important Note regarding Backend Status / Statut du Backend
 
-> **Avertissement :** Le **Backend PHP n'est pas encore totalement implémenté et opérationnel**. 
+> **Notice:** The **PHP Backend is currently NOT yet fully implemented and operational**. 
 > 
-> - L'application fonctionne actuellement avec une architecture **MVC** complète et réactive côté client, utilisant des modèles TypeScript typés (`src/modeles`), des contrôleurs d'état (`src/controleurs`) et une persistance via le stockage local (`gestionnaireStockage.ts`).
-> - Le backend d'API REST PHP autonome est prévu pour les prochaines étapes d'intégration (qui gérera le stockage en base de données relationnelle sécurisée, le téléchargement et le stockage des fichiers côté serveur, ainsi que l'authentification multi-utilisateurs).
+> - The application currently operates with a complete, reactive **MVC architecture** on the client side, using typed TypeScript models (`src/modeles`), state controllers (`src/controleurs`), and local storage persistence (`gestionnaireStockage.ts`).
+> - The standalone PHP REST API backend is slated for upcoming integration milestones (which will handle secure database storage, server-side asset downloads, and multi-tenant authentication).
 
 ---
 
-## Fonctionnalités Principales et Modules par Rôle
+## Key Features and Role-Based Modules
 
-La plateforme propose 9 perspectives de rôles dédiées avec des autorisations adaptées, des tableaux de bord spécialisés et une sous-navigation par onglets :
+The platform implements 9 dedicated role perspectives with tailored permissions, specialized dashboards, and deep-link sub-navigation:
 
-1. **Directeur / Administration (`/tableau-de-bord/directeur`)** :
-   - Indicateurs clés (KPI), annuaire du personnel, validation du programme académique, suivi du budget, registre disciplinaire et gestion des sauvegardes.
-2. **Professeurs et Faculté (`/tableau-de-bord/professeur`)** :
-   - Listes de classes, saisie des notes, appel des présences, devoirs et ressources pédagogiques.
-3. **Espace Élèves (`/tableau-de-bord/eleve`)** :
-   - Bulletins et relevés de notes, emploi du temps hebdomadaire, suivi des devoirs à rendre, demandes d'attestations et historique des accès.
-4. **Espace Parents (`/tableau-de-bord/parent`)** :
-   - Suivi de la scolarité des enfants, bordereaux de paiement des frais, prise de rendez-vous avec les enseignants et contacts d'urgence.
-5. **Secrétariat et Admissions (`/tableau-de-bord/secretaire`)** :
-   - Processus d'inscription des élèves, planification des salles et des cours, annuaire du personnel, cartes scolaires imprimables et diffusion SMS/e-mail de masse.
-6. **Comptabilité et Économat (`/tableau-de-bord/comptable`)** :
-   - Facturation des frais de scolarité, vérification des encaissements, audit du grand livre financier et suivi des impayés.
-7. **Ressources Humaines et Paie (`/tableau-de-bord/ressources-humaines`)** :
-   - Gestion des contrats d'employés, livre de paie mensuel et validation des demandes de congés.
-8. **Bibliothèque et Médiathèque (`/tableau-de-bord/bibliothecaire`)** :
-   - Gestion du catalogue, suivi des emprunts et relances des retards.
-9. **Communication du Campus (`/tableau-de-bord/communication`)** :
-   - Circulaires officielles, alertes d'urgence et diffusions ciblées par groupes.
-
----
-
-## Architecture et Technologies
-
-- **Framework Frontend :** React 19 + TypeScript
-- **Moteur de Routage :** React Router DOM (Navigation avec sous-onglets)
-- **Système de Design et Styles :** Tailwind CSS (Thème clair, boutons rouges d'action, texte sombre lisible, conception réactive mobile-first)
-- **Icônes Graphiques :** Iconify React (`@iconify/react` avec le jeu d'icônes https://icon-sets.iconify.design, aucun émoji)
-- **Modèle d'Architecture :** MVC (Modèle - Vue - Contrôleur)
-  - `src/modeles/` : Types de données, entités du domaine et jeux de données initiaux.
-  - `src/vues/` : Vues de pages et composants d'onglets modulaires.
-  - `src/controleurs/` : Contexte d'application, logique métier, gestionnaires de stockage et dictionnaire de traductions.
-  - `src/composants/` : Composants d'interface réutilisables (boutons rouges, cartes statistiques, modales, en-têtes, barres latérales).
-  - `src/routes/` : Définition des routes et redirections basées sur les rôles.
+1. **Executive Director / Administrator (`/tableau-de-bord/directeur`)**:
+   - Executive KPIs, personnel roster, academic curriculum approvals, budget balance sheets, disciplinary tracking, and system backup management.
+2. **Faculty and Teachers (`/tableau-de-bord/professeur`)**:
+   - Class rosters, student mark sheets, attendance roll-calls, homework assignments, and teaching resources.
+3. **Student Portal (`/tableau-de-bord/eleve`)**:
+   - Academic transcripts, weekly timetable, homework submission status, official certificate requests, and access logs.
+4. **Parent and Guardian Portal (`/tableau-de-bord/parent`)**:
+   - Multi-child progress monitoring, tuition payment slips, teacher conference bookings, and emergency contacts.
+5. **Admissions and Secretary Desk (`/tableau-de-bord/secretaire`)**:
+   - Student enrolment workflows, room and class scheduling, staff directory, printable ID cards, and mass SMS broadcast.
+6. **Bursar and Accounting (`/tableau-de-bord/comptable`)**:
+   - Tuition invoicing, receipt verification, ledger audit, and fee recovery.
+7. **Human Resources and Payroll (`/tableau-de-bord/ressources-humaines`)**:
+   - Employee contracts, monthly payroll ledger, and leave request approvals.
+8. **Library and Media Center (`/tableau-de-bord/bibliothecaire`)**:
+   - Catalog management, checkout circulation tracking, and overdue return reminders.
+9. **Campus Communications (`/tableau-de-bord/communication`)**:
+   - Official circulars, urgent campus alerts, and targeted group dispatches.
 
 ---
 
-## Démarrage Rapide
+## Architecture and Technologies
 
-### Prérequis
-- **Node.js** : Version 18 ou supérieure
-- **npm** : Version 9 ou supérieure
+- **Frontend Framework:** React 19 + TypeScript
+- **Routing Engine:** React Router DOM (Deep-link routing with nested sub-tabs)
+- **Styling and Design System:** Tailwind CSS (Light theme, red action accents, dark text, fully responsive mobile-first layout)
+- **Design Icons:** Lucide React (vector icon components only, no emoji or keyboard symbols)
+- **Architecture Pattern:** MVC (Model - View - Controller)
+  - `src/modeles/`: Data types, entity models, and default datasets.
+  - `src/vues/`: Page views and modular tab components.
+  - `src/controleurs/`: Application context, business logic, storage engines, and translation dictionary.
+  - `src/composants/`: Reusable atomic UI components (buttons, stat cards, dialogs, headers, sidebars).
+  - `src/routes/`: Route definitions and role-based redirect handlers.
 
-### Étapes d'Installation
+---
 
-1. **Naviguer dans le dossier du projet :**
+## Getting Started / Comment Demarrer le Projet
+
+### Prerequisites
+- **Node.js**: Version 18.x or higher
+- **npm**: Version 9.x or higher
+
+### Installation Steps
+
+1. **Clone or navigate to the repository directory:**
    ```bash
    cd academic-management-system
    ```
 
-2. **Installer toutes les dépendances :**
+2. **Install all dependencies:**
    ```bash
    npm install
    ```
 
-3. **Lancer le serveur de développement :**
+3. **Start the development server:**
    ```bash
    npm run dev
    ```
-   L'application sera accessible sur : `http://localhost:3000`
+   The application will be accessible at:
+   ```
+   http://localhost:3000
+   ```
 
-4. **Vérifier la compilation TypeScript et le code :**
+4. **Verify TypeScript compilation and linting:**
    ```bash
    npm run lint
    ```
 
-5. **Compiler pour la production :**
+5. **Build for production:**
    ```bash
    npm run build
    ```
 
 ---
 
-## Structure du Projet
+## Project Structure
 
 ```
 src/
-├── modeles/               # Interfaces TypeScript et entités métier
-│   ├── types.ts           # Définitions centrales des types
-│   └── donneesInitiales.ts # Jeu de données de démonstration
-├── controleurs/           # Contrôleurs d'état et logique métier
-│   ├── contexteAcademie.tsx # Hook et export du contexte
-│   └── contexte/          # Gestionnaires de stockage et fournisseur
-├── vues/                  # Vues et tableaux de bord (Couche Vue MVC)
-│   ├── tableauDeBord/     # Tableaux de bord spécialisés par rôle
-│   ├── eleves/            # Module de gestion des élèves
-│   ├── professeurs/       # Module de gestion des enseignants
-│   ├── comptabilite/      # Module financier et facturation
+├── modeles/               # TypeScript interfaces and domain entities
+│   ├── types.ts           # Central type definitions
+│   └── donneesInitiales.ts # Default structured demo dataset
+├── controleurs/           # State controllers and business logic
+│   ├── contexteAcademie.tsx # Context hook and export
+│   └── contexte/          # Storage managers, dictionary, and provider
+├── vues/                  # Views and Dashboards (MVC View layer)
+│   ├── tableauDeBord/     # Role-specific dashboard views and sub-tabs
+│   ├── eleves/            # Student management module
+│   ├── professeurs/       # Faculty management module
+│   ├── comptabilite/      # Accounting and fees module
 │   └── ...
-├── composants/            # Composants UI réutilisables
-│   └── communs/           # Boutons rouges, cartes métriques, en-têtes, etc.
-└── routes/                # Routage de l'application
+├── composants/            # Reusable UI components
+│   └── communs/           # Red buttons, metric cards, navigation headers, etc.
+└── routes/                # Application routes and deep links
 ```
-

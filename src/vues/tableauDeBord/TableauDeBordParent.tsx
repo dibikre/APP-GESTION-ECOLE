@@ -19,6 +19,7 @@ export const TableauDeBordParent: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      {/* Affichage direct du module selectionne sans menu horizontal redondant */}
       {(cleSousOnglet === 'suivi' || !cleSousOnglet) && <OngletParentSuiviEnfant />}
       {cleSousOnglet === 'finances' && <OngletParentFinances />}
       {cleSousOnglet === 'communication' && <OngletParentCommunication />}

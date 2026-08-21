@@ -6,7 +6,7 @@ import {
   Smartphone,
   CheckCircle,
   FileText,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 

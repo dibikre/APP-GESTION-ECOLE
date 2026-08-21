@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter } from '../../composants/communs/IconesAcademie';
+import { Filter } from 'lucide-react';
 import { NoteEleve } from '../../modeles/types';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
 

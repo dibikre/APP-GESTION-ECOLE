@@ -9,7 +9,7 @@ import {
   PlusCircle,
   ArrowUpRight,
   ArrowDownLeft,
-} from '../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { CarteStatistique } from '../../composants/communs/CarteStatistique';
 import { BoutonRouge } from '../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
@@ -20,6 +20,7 @@ export const TableauDeBordComptable: React.FC = () => {
     listeFactures,
     listeTransactions,
     traduire,
+    formaterMontant,
   } = utiliserAcademie();
 
   const naviguer = useNavigate();
@@ -37,11 +38,14 @@ export const TableauDeBordComptable: React.FC = () => {
             <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-emerald-700 text-white">
               {traduire('role_comptable')}
             </span>
-            <span className="text-xs text-slate-500 font-medium">{traduire('bureauEconome')}</span>
+            <span className="text-xs text-slate-500 font-medium">David Hawthorne &bull; Bursar & Treasury Office</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-            {traduire('apercuFinancierEconome')}
+            Financial & Bursar Overview
           </h1>
+          <p className="text-sm text-slate-500 mt-0.5">
+            Monitor tuition collection rates, track operational disbursements, and audit accounts.
+          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <BoutonRouge
@@ -61,32 +65,32 @@ export const TableauDeBordComptable: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CarteStatistique
           titre={traduire('totalFacture')}
-          valeur={`$${totalFacture.toLocaleString()}`}
-          sousTitre={traduire('fraisTrimestre2')}
+          valeur={formaterMontant(totalFacture)}
+          sousTitre="Term 2 Tuition & Fees"
           icone={DollarSign}
           identifiant="compta-carte-total"
         />
         <CarteStatistique
           titre={traduire('recettesEncaissees')}
-          valeur={`$${totalEncaisse.toLocaleString()}`}
-          sousTitre={traduire('recettesBancairesVerifiees')}
+          valeur={formaterMontant(totalEncaisse)}
+          sousTitre="Verified bank receipts"
           icone={CreditCard}
           variation={{ texte: "+15.4%", positive: true }}
           identifiant="compta-carte-recettes"
         />
         <CarteStatistique
           titre={traduire('impayesRestants')}
-          valeur={`$${totalImpayes.toLocaleString()}`}
-          sousTitre={`${facturesEnRetard.length} ${traduire('facturesElevesEnAttente')}`}
+          valeur={formaterMontant(totalImpayes)}
+          sousTitre={`${facturesEnRetard.length} pending student invoices`}
           icone={AlertTriangle}
           identifiant="compta-carte-impayes"
         />
         <CarteStatistique
           titre={traduire('tauxPaiement')}
           valeur={`${Math.round((totalEncaisse / totalFacture) * 100)}%`}
-          sousTitre={traduire('indicateurRecouvrement')}
+          sousTitre="Receivable collection metric"
           icone={TrendingUp}
-          variation={{ texte: traduire('objectif85'), positive: true }}
+          variation={{ texte: "Target 85%", positive: true }}
           identifiant="compta-carte-taux"
         />
       </div>
@@ -96,10 +100,10 @@ export const TableauDeBordComptable: React.FC = () => {
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
               <h2 className="text-base font-bold text-slate-900">{traduire('facturesImpayees')}</h2>
-              <p className="text-xs text-slate-500">{traduire('facturesImpayeesSousTitre')}</p>
+              <p className="text-xs text-slate-500">Student accounts requiring collection or reminders</p>
             </div>
             <BoutonRouge
-              texte={traduire('voirTout')}
+              texte="View All Invoices"
               variante="secondaire"
               taille="petit"
               onClick={() => naviguer(CHEMINS_APPLICATION.COMPTABILITE)}
@@ -116,13 +120,13 @@ export const TableauDeBordComptable: React.FC = () => {
                   <div>
                     <h3 className="text-sm font-bold text-slate-900">{facture.nomEleve}</h3>
                     <p className="text-xs text-slate-500">
-                      {facture.numeroFacture} &bull; {facture.classe} &bull; {traduire('echeanceLe')} {facture.dateEcheance}
+                      {facture.numeroFacture} &bull; {facture.classe} &bull; Due {facture.dateEcheance}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
                   <span className="text-xs font-bold text-red-600 block">
-                    ${facture.montantTotal - facture.montantPaye}
+                    {formaterMontant(facture.montantTotal - facture.montantPaye)} Outstanding
                   </span>
                   <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">
                     {facture.statut}
@@ -138,7 +142,7 @@ export const TableauDeBordComptable: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <h2 className="text-base font-bold text-slate-900">{traduire('dernieresTransactions')}</h2>
               <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                {traduire('journalFinancier')}
+                Ledger
               </span>
             </div>
 
@@ -155,7 +159,7 @@ export const TableauDeBordComptable: React.FC = () => {
                       {txn.reference}
                     </span>
                     <span className={`font-extrabold ${txn.type === 'revenu' ? 'text-emerald-700' : 'text-slate-900'}`}>
-                      {txn.type === 'revenu' ? '+' : '-'}${txn.montant.toLocaleString()}
+                      {txn.type === 'revenu' ? '+' : '-'}{formaterMontant(txn.montant)}
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1">{txn.description}</p>
@@ -166,7 +170,7 @@ export const TableauDeBordComptable: React.FC = () => {
 
           <div className="mt-4 pt-3 border-t border-slate-100">
             <BoutonRouge
-              texte={traduire('journalFinancier')}
+              texte="Audit Ledger Desk"
               variante="secondaire"
               largeurTotale
               onClick={() => naviguer(CHEMINS_APPLICATION.COMPTABILITE)}
@@ -177,3 +181,4 @@ export const TableauDeBordComptable: React.FC = () => {
     </div>
   );
 };
+

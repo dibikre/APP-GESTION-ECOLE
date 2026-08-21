@@ -5,7 +5,7 @@ import {
   Lock,
   CheckCircle,
   FileCheck,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 
 export const OngletSecretaireSecurite: React.FC = () => {

@@ -6,7 +6,7 @@ import {
   Archive,
   Mail,
   Phone,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletSecretaireAdministration: React.FC = () => {

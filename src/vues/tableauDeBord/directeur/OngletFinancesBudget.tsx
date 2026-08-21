@@ -7,11 +7,11 @@ import {
   TrendingUp,
   CreditCard,
   Building,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletFinancesBudget: React.FC = () => {
-  const { listeBudgets, listeFactures, listeTransactions } = utiliserAcademie();
+  const { listeBudgets, listeFactures, listeTransactions, formaterMontant } = utiliserAcademie();
 
   const totalFacture = listeFactures.reduce((s, f) => s + f.montantTotal, 0);
   const totalEncaisse = listeFactures.reduce((s, f) => s + f.montantPaye, 0);
@@ -40,7 +40,7 @@ export const OngletFinancesBudget: React.FC = () => {
           ].map((item) => (
             <div key={item.niveau} className="p-3 bg-slate-50 rounded-lg border border-slate-100 text-xs">
               <span className="font-bold text-slate-900 block">{item.niveau}</span>
-              <span className="text-base font-extrabold text-red-600 block mt-1">${item.montant} / term</span>
+              <span className="text-base font-extrabold text-red-600 block mt-1">{formaterMontant(item.montant)} / term</span>
               <span className="text-[10px] text-slate-500 mt-1 block">{item.rabais}</span>
             </div>
           ))}
@@ -73,9 +73,9 @@ export const OngletFinancesBudget: React.FC = () => {
                   <tr key={b.identifiant} className="hover:bg-slate-50/70">
                     <td className="py-2.5 px-4 font-bold text-slate-900">{b.departement}</td>
                     <td className="py-2.5 px-4 text-slate-600">{b.responsableNom}</td>
-                    <td className="py-2.5 px-4 font-bold text-slate-900">${b.budgetAlloue.toLocaleString()}</td>
-                    <td className="py-2.5 px-4 text-red-600 font-semibold">${b.budgetDepense.toLocaleString()}</td>
-                    <td className="py-2.5 px-4 text-emerald-700 font-bold">${restant.toLocaleString()}</td>
+                    <td className="py-2.5 px-4 font-bold text-slate-900">{formaterMontant(b.budgetAlloue)}</td>
+                    <td className="py-2.5 px-4 text-red-600 font-semibold">{formaterMontant(b.budgetDepense)}</td>
+                    <td className="py-2.5 px-4 text-emerald-700 font-bold">{formaterMontant(restant)}</td>
                     <td className="py-2.5 px-4 text-right">
                       <span className="font-extrabold text-slate-900">{ratio}%</span>
                     </td>
@@ -89,3 +89,4 @@ export const OngletFinancesBudget: React.FC = () => {
     </div>
   );
 };
+

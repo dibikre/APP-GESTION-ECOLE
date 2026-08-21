@@ -6,12 +6,12 @@ import {
   AlertTriangle,
   ChevronDown,
   Clock,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { CarteStatistique } from '../../../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletParentSuiviEnfant: React.FC = () => {
-  const { listeNotes, listePresences, traduire } = utiliserAcademie();
+  const { listeNotes, listePresences } = utiliserAcademie();
   const [enfantActif, setEnfantActif] = useState<'marcus' | 'sophie'>('marcus');
 
   const donneesEnfant = enfantActif === 'marcus' ? {
@@ -37,9 +37,9 @@ export const OngletParentSuiviEnfant: React.FC = () => {
       {/* Child Switcher Banner */}
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">{traduire('vueEnsembleParent')}</span>
+          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Active Student Record</span>
           <h3 className="text-lg font-bold text-slate-900">{donneesEnfant.nom} &bull; {donneesEnfant.classe}</h3>
-          <p className="text-xs text-slate-500">ID: {donneesEnfant.matricule} &bull; Tuteur: {donneesEnfant.tuteur}</p>
+          <p className="text-xs text-slate-500">ID: {donneesEnfant.matricule} &bull; Homeroom Tutor: {donneesEnfant.tuteur}</p>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -66,7 +66,7 @@ export const OngletParentSuiviEnfant: React.FC = () => {
       {/* Child Performance KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CarteStatistique
-          titre={traduire('kpiMoyenneEnfant')}
+          titre="Academic GPA"
           valeur={donneesEnfant.gpa}
           sousTitre={donneesEnfant.rang}
           icone={Award}
@@ -74,23 +74,23 @@ export const OngletParentSuiviEnfant: React.FC = () => {
           identifiant="parent-kpi-gpa"
         />
         <CarteStatistique
-          titre={traduire('kpiAssiduiteEnfant')}
+          titre="Live Attendance"
           valeur={donneesEnfant.presence}
-          sousTitre={traduire('kpiAssiduiteEnfantSousTitre')}
+          sousTitre="Present at 08:00 AM"
           icone={CalendarCheck}
           identifiant="parent-kpi-presence"
         />
         <CarteStatistique
-          titre={traduire('assiduite')}
-          valeur="100%"
-          sousTitre={traduire('incidentsSignales')}
+          titre="Conduct & Discipline"
+          valeur="Exemplary"
+          sousTitre="0 Behavioral infractions"
           icone={Users}
           identifiant="parent-kpi-conduite"
         />
         <CarteStatistique
-          titre={traduire('kpiSoldeFrais')}
-          valeur="$0.00"
-          sousTitre={traduire('kpiSoldeFraisSousTitre')}
+          titre="Tuition Status"
+          valeur="In Good Standing"
+          sousTitre="Term 2 fully settled"
           icone={Clock}
           identifiant="parent-kpi-frais"
         />

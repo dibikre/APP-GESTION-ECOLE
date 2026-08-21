@@ -4,7 +4,7 @@ import {
   CalendarCheck,
   GraduationCap,
   MessageSquare,
-} from '../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { BoutonRouge } from '../composants/communs/BoutonRouge';
 import { ModaleFormulaire } from '../composants/communs/ModaleFormulaire';
 import { CarteStatistique } from '../composants/communs/CarteStatistique';
@@ -55,6 +55,9 @@ export const VueParents: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             {traduire('titreParents')}
           </h1>
+          <p className="text-sm text-slate-500 mt-1">
+            {traduire('descriptionParents')}
+          </p>
         </div>
 
         <div className="flex items-center gap-3">

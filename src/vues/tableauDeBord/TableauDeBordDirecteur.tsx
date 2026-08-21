@@ -21,6 +21,7 @@ export const TableauDeBordDirecteur: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      {/* Affichage direct du module selectionne sans menu horizontal redondant */}
       {(cleSousOnglet === 'vue_globale' || !cleSousOnglet) && <OngletVueGlobale />}
       {cleSousOnglet === 'personnel' && <OngletPersonnelSalaires />}
       {cleSousOnglet === 'academique' && <OngletAcademique />}

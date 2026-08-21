@@ -9,7 +9,7 @@ import {
   Calendar,
   ArrowUpRight,
   ShieldAlert,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { CarteStatistique } from '../../../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
@@ -38,33 +38,33 @@ export const OngletVueGlobale: React.FC = () => {
       {/* KPIs Institutionnels */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CarteStatistique
-          titre={traduire('kpiElevesInscrits')}
+          titre="Enrolled Students"
           valeur={listeEleves.length}
-          sousTitre={traduire('kpiElevesInscritsSousTitre')}
+          sousTitre="Active across 4 cohorts"
           icone={GraduationCap}
           variation={{ texte: "+8.4%", positive: true }}
           identifiant="dir-kpi-eleves"
         />
         <CarteStatistique
-          titre={traduire('kpiTauxPresence')}
+          titre="Attendance Rate"
           valeur="96.4%"
-          sousTitre={traduire('kpiTauxPresenceSousTitre')}
+          sousTitre="Daily campus attendance"
           icone={Users}
           variation={{ texte: "+0.8%", positive: true }}
           identifiant="dir-kpi-presence"
         />
         <CarteStatistique
-          titre={traduire('kpiMoyenneAcademique')}
+          titre="Academic Average"
           valeur="85.2 / 100"
-          sousTitre={traduire('kpiMoyenneAcademiqueSousTitre')}
+          sousTitre="Institution-wide GPA"
           icone={Award}
           variation={{ texte: "+1.9%", positive: true }}
           identifiant="dir-kpi-gpa"
         />
         <CarteStatistique
-          titre={traduire('kpiRatioEleveProf')}
+          titre="Student / Teacher Ratio"
           valeur={`${ratioEleveProf} : 1`}
-          sousTitre={`${listeProfesseurs.length} ${traduire('kpiCorpsEnseignantMembres')}`}
+          sousTitre={`${listeProfesseurs.length} Faculty members`}
           icone={TrendingUp}
           identifiant="dir-kpi-ratio"
         />
@@ -73,24 +73,24 @@ export const OngletVueGlobale: React.FC = () => {
       {/* Indicateurs Financiers */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200">
-          <span className="text-xs font-semibold text-slate-500 block">{traduire('revenuTotalFacture')}</span>
+          <span className="text-xs font-semibold text-slate-500 block">Total Invoiced Revenue</span>
           <span className="text-xl font-bold text-slate-900 mt-1 block">{formaterMontant(totalFacture)}</span>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">{traduire('anneeAcademiqueLibelle')}</span>
+          <span className="text-[11px] text-slate-400 mt-0.5 block">Academic Year 2025-2026</span>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200">
-          <span className="text-xs font-semibold text-slate-500 block">{traduire('recettesEncaisses')}</span>
+          <span className="text-xs font-semibold text-slate-500 block">Collected Cash Receipts</span>
           <span className="text-xl font-bold text-emerald-700 mt-1 block">{formaterMontant(totalEncaisse)}</span>
-          <span className="text-[11px] text-emerald-600 font-semibold mt-0.5 block">{tauxPaiement}% {traduire('tauxRecouvrementPourcentage')}</span>
+          <span className="text-[11px] text-emerald-600 font-semibold mt-0.5 block">{tauxPaiement}% collection rate</span>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200">
-          <span className="text-xs font-semibold text-slate-500 block">{traduire('depensesFonctionnement')}</span>
+          <span className="text-xs font-semibold text-slate-500 block">Operating Disbursements</span>
           <span className="text-xl font-bold text-red-600 mt-1 block">{formaterMontant(totalDepenses)}</span>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">{traduire('salairesEtMaintenance')}</span>
+          <span className="text-[11px] text-slate-400 mt-0.5 block">Payroll & maintenance</span>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200">
-          <span className="text-xs font-semibold text-slate-500 block">{traduire('soldeNetTresorerie')}</span>
+          <span className="text-xs font-semibold text-slate-500 block">Net Treasury Balance</span>
           <span className="text-xl font-bold text-slate-900 mt-1 block">{formaterMontant(soldeCaisse)}</span>
-          <span className="text-[11px] text-emerald-600 font-bold mt-0.5 block">{traduire('tresorerieSaine')}</span>
+          <span className="text-[11px] text-emerald-600 font-bold mt-0.5 block">Healthy cashflow</span>
         </div>
       </div>
 
@@ -99,10 +99,10 @@ export const OngletVueGlobale: React.FC = () => {
         <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">{traduire('performanceCohortesTitre')}</h3>
-              <p className="text-xs text-slate-500">{traduire('performanceCohortesSousTitre')}</p>
+              <h3 className="text-sm font-bold text-slate-900">Academic Cohort Performance & Attendance</h3>
+              <p className="text-xs text-slate-500">Comparative grade average and presence rate</p>
             </div>
-            <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">{traduire('trimestre2')}</span>
+            <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">Term 2</span>
           </div>
 
           <div className="mt-4 space-y-3">
@@ -116,15 +116,15 @@ export const OngletVueGlobale: React.FC = () => {
               <div key={c.classe} className="p-3 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between text-xs">
                 <div>
                   <span className="font-bold text-slate-900 block">{c.classe} <span className="text-[10px] font-normal text-slate-500">({c.cycle})</span></span>
-                  <span className="text-[11px] text-slate-500">{c.effectif} {traduire('elevesInscrits')}</span>
+                  <span className="text-[11px] text-slate-500">{c.effectif} Enrolled students</span>
                 </div>
                 <div className="flex items-center gap-6">
                   <div className="text-right">
-                    <span className="text-slate-500 text-[10px] uppercase font-bold block">{traduire('moyenne')}</span>
+                    <span className="text-slate-500 text-[10px] uppercase font-bold block">Average</span>
                     <span className="font-extrabold text-slate-900 text-xs">{c.moyenne}%</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-slate-500 text-[10px] uppercase font-bold block">{traduire('assiduite')}</span>
+                    <span className="text-slate-500 text-[10px] uppercase font-bold block">Attendance</span>
                     <span className="font-extrabold text-emerald-700 text-xs">{c.presence}%</span>
                   </div>
                 </div>
@@ -139,10 +139,10 @@ export const OngletVueGlobale: React.FC = () => {
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                 <ShieldAlert className="w-4 h-4 text-red-600" />
-                {traduire('alertesInstitutionnellesCritiques')}
+                Critical Institutional Alerts
               </h3>
               <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-red-100 text-red-700">
-                {traduire('actionRequise')}
+                Action Req.
               </span>
             </div>
 
@@ -157,8 +157,8 @@ export const OngletVueGlobale: React.FC = () => {
                 </div>
               ))}
               <div className="p-2.5 rounded-lg border border-amber-100 bg-amber-50/50 text-xs">
-                <span className="font-bold text-slate-900 block">{traduire('comptesEnRetardTitre')}</span>
-                <p className="text-[11px] text-slate-600 mt-0.5">{traduire('comptesEnRetardDesc')}</p>
+                <span className="font-bold text-slate-900 block">3 Overdue Tuition Accounts</span>
+                <p className="text-[11px] text-slate-600 mt-0.5">$3,300 total pending payment for Term 2.</p>
               </div>
             </div>
           </div>

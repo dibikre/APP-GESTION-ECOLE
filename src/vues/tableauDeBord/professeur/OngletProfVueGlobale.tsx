@@ -7,12 +7,12 @@ import {
   Clock,
   BookOpen,
   MessageSquare,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { CarteStatistique } from '../../../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
 
 export const OngletProfVueGlobale: React.FC = () => {
-  const { listeDevoirs, listeCoursHoraires, listeNotes, traduire } = utiliserAcademie();
+  const { listeEleves, listeDevoirs, listeCoursHoraires, listeNotes } = utiliserAcademie();
 
   const notesProf = listeNotes.filter((n) => n.matiere.includes('Math'));
   const moyenneClasse = notesProf.length > 0
@@ -24,14 +24,14 @@ export const OngletProfVueGlobale: React.FC = () => {
       {/* Teacher KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CarteStatistique
-          titre={traduire('kpiElevesAssignes')}
+          titre="Assigned Students"
           valeur="28"
           sousTitre="Grade 11-A (Science Track)"
           icone={Users}
           identifiant="prof-kpi-eleves"
         />
         <CarteStatistique
-          titre={traduire('kpiMoyenneClasse')}
+          titre="Class Average Score"
           valeur={`${moyenneClasse}%`}
           sousTitre="Advanced Mathematics"
           icone={Award}
@@ -39,16 +39,16 @@ export const OngletProfVueGlobale: React.FC = () => {
           identifiant="prof-kpi-moyenne"
         />
         <CarteStatistique
-          titre={traduire('kpiPresenceAppel')}
+          titre="Live Class Attendance"
           valeur="98.2%"
-          sousTitre={traduire('kpiPresenceAppelSousTitre')}
+          sousTitre="Daily morning roll-call"
           icone={CalendarCheck}
           identifiant="prof-kpi-presence"
         />
         <CarteStatistique
-          titre={traduire('kpiHeuresHebdo')}
+          titre="Weekly Lecture Hours"
           valeur="16h / wk"
-          sousTitre={traduire('kpiHeuresHebdoSousTitre')}
+          sousTitre="4 Course modules"
           icone={Clock}
           identifiant="prof-kpi-heures"
         />
@@ -59,10 +59,10 @@ export const OngletProfVueGlobale: React.FC = () => {
         <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <h3 className="text-sm font-bold text-slate-900">{traduire('emploiDuTempsEnseignant')}</h3>
-              <p className="text-xs text-slate-500">{traduire('emploiDuTempsEnseignantDesc')}</p>
+              <h3 className="text-sm font-bold text-slate-900">Today’s Teaching Schedule</h3>
+              <p className="text-xs text-slate-500">Upcoming classroom lectures and lab sessions</p>
             </div>
-            <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">{traduire('anneeAcademiqueLibelle')}</span>
+            <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">Monday</span>
           </div>
 
           <div className="mt-4 space-y-3">
@@ -87,10 +87,10 @@ export const OngletProfVueGlobale: React.FC = () => {
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                 <CheckSquare className="w-4 h-4 text-red-600" />
-                {traduire('tachesPedaPrioritaires')}
+                Priority Teaching Tasks
               </h3>
               <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-slate-100 text-slate-700">
-                3 {traduire('enAttenteEvaluation')}
+                3 Pending
               </span>
             </div>
 

@@ -5,7 +5,7 @@ import {
   Plus,
   ArrowRightLeft,
   Bookmark,
-} from '../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { BoutonRouge } from '../composants/communs/BoutonRouge';
 import { CarteStatistique } from '../composants/communs/CarteStatistique';
 import { utiliserAcademie } from '../controleurs/contexteAcademie';
@@ -43,6 +43,9 @@ export const VueBibliotheque: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             {traduire('titreBibliotheque')}
           </h1>
+          <p className="text-sm text-slate-500 mt-1">
+            {traduire('descriptionBibliotheque')}
+          </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <BoutonRouge

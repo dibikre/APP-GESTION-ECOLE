@@ -166,3 +166,4 @@ export interface CoursHoraire {
 export * from './typesEtendus';
 export * from './classesAcademiques';
 export * from './devises';
+export * from './menusParRole';

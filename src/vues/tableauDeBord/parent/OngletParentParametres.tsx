@@ -6,7 +6,7 @@ import {
   Shield,
   Save,
   CheckCircle,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 
 export const OngletParentParametres: React.FC = () => {

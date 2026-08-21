@@ -8,7 +8,7 @@ import {
   UserPlus,
   Check,
   X,
-} from '../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { CarteStatistique } from '../../composants/communs/CarteStatistique';
 import { BoutonRouge } from '../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
@@ -20,6 +20,7 @@ export const TableauDeBordRH: React.FC = () => {
     listeDemandesConges,
     traiterDemandeConge,
     traduire,
+    formaterMontant,
   } = utiliserAcademie();
 
   const naviguer = useNavigate();
@@ -35,11 +36,14 @@ export const TableauDeBordRH: React.FC = () => {
             <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-amber-600 text-white">
               {traduire('role_ressources_humaines')}
             </span>
-            <span className="text-xs text-slate-500 font-medium">Clara Bennett &bull; {traduire('apercuRH')}</span>
+            <span className="text-xs text-slate-500 font-medium">Clara Bennett &bull; HR & Staffing Office</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
-            {traduire('apercuRH')}
+            Human Resources & Staffing
           </h1>
+          <p className="text-sm text-slate-500 mt-0.5">
+            Oversee staff contracts, process time-off requests, and audit monthly payroll.
+          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <BoutonRouge
@@ -60,31 +64,31 @@ export const TableauDeBordRH: React.FC = () => {
         <CarteStatistique
           titre={traduire('personnelActif')}
           valeur={listeEmployes.length}
-          sousTitre={traduire('contratsEnCours')}
+          sousTitre="Permanent & contracted staff"
           icone={Users}
           identifiant="rh-carte-effectif"
         />
         <CarteStatistique
           titre={traduire('masseSalarialeMensuelle')}
-          valeur={`$${masseSalariale.toLocaleString()}`}
-          sousTitre={traduire('paieProchainVirement')}
+          valeur={formaterMontant(masseSalariale)}
+          sousTitre="Monthly staff disbursements"
           icone={DollarSign}
           identifiant="rh-carte-payroll"
         />
         <CarteStatistique
           titre={traduire('demandesAValider')}
           valeur={congesEnAttente.length}
-          sousTitre={traduire('dossiersAValider')}
+          sousTitre="Action required"
           icone={CalendarCheck}
           variation={{ texte: "Priority", positive: false }}
           identifiant="rh-carte-conges"
         />
         <CarteStatistique
-          titre={traduire('recrutementsEnCours')}
-          valeur="2"
-          sousTitre={traduire('postesVacants')}
+          titre="Staff Retention"
+          valeur="98.5%"
+          sousTitre="Institutional stability index"
           icone={Briefcase}
-          variation={{ texte: "Active", positive: true }}
+          variation={{ texte: "High", positive: true }}
           identifiant="rh-carte-retention"
         />
       </div>
@@ -94,10 +98,10 @@ export const TableauDeBordRH: React.FC = () => {
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div>
               <h2 className="text-base font-bold text-slate-900">{traduire('demandesAValider')}</h2>
-              <p className="text-xs text-slate-500">{traduire('demandesCongesTitre')}</p>
+              <p className="text-xs text-slate-500">Employee leave and time-off requests</p>
             </div>
             <BoutonRouge
-              texte={traduire('voirTout')}
+              texte="View All Leaves"
               variante="secondaire"
               taille="petit"
               onClick={() => naviguer(CHEMINS_APPLICATION.RESSOURCES_HUMAINES)}
@@ -115,7 +119,7 @@ export const TableauDeBordRH: React.FC = () => {
                     </span>
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    {demande.dateDebut} &rarr; {demande.dateFin} &bull; {demande.motif}
+                    {demande.dateDebut} &rarr; {demande.dateFin} &bull; Reason: {demande.motif}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -126,14 +130,14 @@ export const TableauDeBordRH: React.FC = () => {
                         onClick={() => traiterDemandeConge(demande.identifiant, 'approuve')}
                         className="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 cursor-pointer flex items-center gap-1"
                       >
-                        <Check className="w-3.5 h-3.5" /> {traduire('approuver')}
+                        <Check className="w-3.5 h-3.5" /> Approve
                       </button>
                       <button
                         type="button"
                         onClick={() => traiterDemandeConge(demande.identifiant, 'refuse')}
                         className="px-2.5 py-1 text-xs font-bold rounded-lg bg-red-50 text-red-700 hover:bg-red-100 cursor-pointer flex items-center gap-1"
                       >
-                        <X className="w-3.5 h-3.5" /> {traduire('rejeter')}
+                        <X className="w-3.5 h-3.5" /> Reject
                       </button>
                     </>
                   ) : (
@@ -152,7 +156,7 @@ export const TableauDeBordRH: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <h2 className="text-base font-bold text-slate-900">{traduire('annuairePersonnel')}</h2>
               <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                {traduire('personnelActif')}
+                Active Staff
               </span>
             </div>
 
@@ -161,7 +165,7 @@ export const TableauDeBordRH: React.FC = () => {
                 <div key={employe.identifiant} className="p-3 rounded-lg border border-slate-100 bg-slate-50/70 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-slate-900">{employe.nomComplet}</span>
-                    <span className="font-semibold text-slate-600">${employe.salaireMensuel}/mo</span>
+                    <span className="font-semibold text-slate-600">{formaterMontant(employe.salaireMensuel)}/mo</span>
                   </div>
                   <p className="text-[11px] text-slate-500 mt-0.5">{employe.poste} &bull; {employe.departement}</p>
                 </div>
@@ -171,7 +175,7 @@ export const TableauDeBordRH: React.FC = () => {
 
           <div className="mt-4 pt-3 border-t border-slate-100">
             <BoutonRouge
-              texte={traduire('menu_gestion_personnel')}
+              texte="Open Staff Management"
               variante="secondaire"
               largeurTotale
               onClick={() => naviguer(CHEMINS_APPLICATION.RESSOURCES_HUMAINES)}

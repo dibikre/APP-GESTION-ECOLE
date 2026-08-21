@@ -5,7 +5,7 @@ import {
   Download,
   CalendarCheck,
   TrendingUp,
-} from '../../../composants/communs/IconesAcademie';
+} from 'lucide-react';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 
 export const OngletEleveDossierAcademique: React.FC = () => {
