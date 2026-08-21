@@ -55,7 +55,7 @@ export const MENU_ELEVE: ElementMenuNavigation[] = [
   },
   {
     cle: 'devoirs_examens',
-    chemin: `${CHEMINS_APPLICATION.TABLEAU_DE_BORD_ELEVE}/cours`,
+    chemin: `${CHEMINS_APPLICATION.TABLEAU_DE_BORD_ELEVE}/devoirs`,
     libelleCle: 'menu_devoirs_examens',
     icone: 'ph:calendar-check-bold',
   },

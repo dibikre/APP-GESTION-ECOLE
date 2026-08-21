@@ -1,11 +1,11 @@
 import { TRADUCTIONS_FRANCAIS } from './traductions/traductionsFrancais';
-import { TRADUCTIONS_ANGLAIS } from './traductions/traductionsAnglais';
 
-export type LangueApplication = 'fr' | 'en';
+export type LangueApplication = 'fr';
 
 export const DICTIONNAIRE_TRADUCTIONS = {
   fr: TRADUCTIONS_FRANCAIS,
-  en: TRADUCTIONS_ANGLAIS,
 };
 
+export const TRADUCTIONS = TRADUCTIONS_FRANCAIS;
 export type CleTraduction = keyof typeof TRADUCTIONS_FRANCAIS;
+

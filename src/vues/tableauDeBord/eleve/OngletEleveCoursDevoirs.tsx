@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  BookOpen,
   Calendar,
   Download,
   UploadCloud,
   Clock,
-  CheckCircle,
 } from 'lucide-react';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
@@ -16,14 +14,14 @@ export const OngletEleveCoursDevoirs: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-bold text-slate-900">Weekly Schedule, Course Slides & Homework</h3>
-        <p className="text-xs text-slate-500">Access classroom schedules, lecture slide decks, and submit homework sets.</p>
+        <h3 className="text-lg font-bold text-slate-900">Emploi du Temps, Supports de Cours & Devoirs</h3>
+        <p className="text-xs text-slate-500">Consultez les horaires de cours, les fiches pédagogiques et soumettez vos devoirs.</p>
       </div>
 
-      {/* Weekly Timetable */}
+      {/* Emploi du temps hebdomadaire */}
       <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
         <h4 className="text-sm font-bold text-slate-900 pb-2 border-b border-slate-100 flex items-center gap-1.5">
-          <Calendar className="w-4 h-4 text-red-600" /> Weekly Class Timetable (Grade 11-A)
+          <Calendar className="w-4 h-4 text-red-600" /> Emploi du Temps Hebdomadaire (Classe 1ère S1)
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
           {listeCoursHoraires.map((c) => (
@@ -39,10 +37,10 @@ export const OngletEleveCoursDevoirs: React.FC = () => {
         </div>
       </div>
 
-      {/* Pending Homework */}
+      {/* Devoirs en attente */}
       <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
         <h4 className="text-sm font-bold text-slate-900 pb-2 border-b border-slate-100 flex items-center gap-1.5">
-          <Clock className="w-4 h-4 text-red-600" /> Pending Problem Sets & Homework
+          <Clock className="w-4 h-4 text-red-600" /> Devoirs & Travaux à Rendre
         </h4>
         <div className="divide-y divide-slate-100 mt-2">
           {listeDevoirs.map((dev) => (
@@ -50,23 +48,23 @@ export const OngletEleveCoursDevoirs: React.FC = () => {
               <div>
                 <span className="font-bold text-slate-900">{dev.titre}</span> &bull; <span className="text-slate-500">{dev.matiere}</span>
                 <p className="text-[11px] text-slate-600 mt-0.5">{dev.description}</p>
-                <span className="text-[10px] font-bold text-red-600 mt-1 block">Due by: {dev.dateEcheance}</span>
+                <span className="text-[10px] font-bold text-red-600 mt-1 block">Échéance : {dev.dateEcheance}</span>
               </div>
               <BoutonRouge
-                texte="Submit Homework"
+                texte="Déposer le travail"
                 icone={UploadCloud}
                 taille="petit"
-                onClick={() => alert(`Submitting document for ${dev.titre}`)}
+                onClick={() => alert(`Dépôt du document pour : ${dev.titre}`)}
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Downloadable Lecture Resources */}
+      {/* Supports de cours telechargeables */}
       <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
         <h4 className="text-sm font-bold text-slate-900 pb-2 border-b border-slate-100 flex items-center gap-1.5">
-          <Download className="w-4 h-4 text-red-600" /> Course Handouts & Slide Decks
+          <Download className="w-4 h-4 text-red-600" /> Supports de Cours & Polycopiés
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
           {listeRessources.map((res) => (
@@ -79,10 +77,10 @@ export const OngletEleveCoursDevoirs: React.FC = () => {
                 <span className="text-[10px] text-slate-400 font-semibold">{res.typeFichier} &bull; {res.taille}</span>
                 <button
                   type="button"
-                  onClick={() => alert(`Downloading ${res.titre}`)}
+                  onClick={() => alert(`Téléchargement de : ${res.titre}`)}
                   className="text-xs font-bold text-red-600 hover:text-red-700 cursor-pointer"
                 >
-                  Download
+                  Télécharger
                 </button>
               </div>
             </div>
@@ -92,3 +90,4 @@ export const OngletEleveCoursDevoirs: React.FC = () => {
     </div>
   );
 };
+

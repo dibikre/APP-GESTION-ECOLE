@@ -21,11 +21,9 @@ import { recupererDonneesLocales, sauvegarderDonneesLocales } from './gestionnai
 const ContexteAcademie = createContext<ContexteAcademieType | undefined>(undefined);
 
 export const FournisseurAcademie: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [langueActuelle, setLangueActuelle] = useState<LangueApplication>(() =>
-    recupererDonneesLocales<LangueApplication>('academie_langue', 'en')
-  );
+  const [langueActuelle, setLangueActuelle] = useState<LangueApplication>('fr');
   const [deviseActuelle, setDeviseActuelle] = useState<CodeDevise>(() =>
-    recupererDonneesLocales<CodeDevise>('academie_devise', 'USD')
+    recupererDonneesLocales<CodeDevise>('academie_devise', 'EUR')
   );
   const [roleActif, setRoleActif] = useState<RoleUtilisateur>('administrateur');
   const [ongletActif, setOngletActif] = useState<string>('tableau_de_bord');

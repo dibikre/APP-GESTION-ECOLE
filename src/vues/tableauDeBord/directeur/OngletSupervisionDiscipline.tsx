@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import {
-  ShieldAlert,
-  AlertTriangle,
-  Award,
-  Users,
   Plus,
-  CheckCircle,
 } from 'lucide-react';
 import { BoutonRouge } from '../../../composants/communs/BoutonRouge';
 import { utiliserAcademie } from '../../../controleurs/contexteAcademie';
@@ -15,7 +10,7 @@ export const OngletSupervisionDiscipline: React.FC = () => {
 
   const [formulaireOuvert, setFormulaireOuvert] = useState(false);
   const [eleveNom, setEleveNom] = useState('');
-  const [classe, setClasse] = useState('Grade 11-A');
+  const [classe, setClasse] = useState('1ère S1');
   const [gravite, setGravite] = useState<'mineure' | 'moyenne' | 'critique'>('moyenne');
   const [description, setDescription] = useState('');
   const [sanction, setSanction] = useState('');
@@ -28,8 +23,8 @@ export const OngletSupervisionDiscipline: React.FC = () => {
       classe,
       gravite,
       description,
-      sanction: sanction || 'Parent conference and disciplinary notice.',
-      rapportePar: 'Executive Board',
+      sanction: sanction || 'Convocation des parents et avertissement sur le livret scolaire.',
+      rapportePar: 'Direction des Études',
       dateIncident: new Date().toISOString().split('T')[0],
       statut: 'en_cours',
     });
@@ -43,11 +38,11 @@ export const OngletSupervisionDiscipline: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h3 className="text-lg font-bold text-slate-900">Discipline Supervision & Academic Honor Roll</h3>
-          <p className="text-xs text-slate-500">Record campus disciplinary incidents, assign sanctions, and audit academic rankings.</p>
+          <h3 className="text-lg font-bold text-slate-900">Supervision Disciplinaire & Tableau d'Honneur</h3>
+          <p className="text-xs text-slate-500">Enregistrez les incidents disciplinaires, attribuez des sanctions et suivez le tableau d'excellence.</p>
         </div>
         <BoutonRouge
-          texte="Log Disciplinary Incident"
+          texte="Signaler un incident"
           icone={Plus}
           onClick={() => setFormulaireOuvert(!formulaireOuvert)}
         />
@@ -55,79 +50,79 @@ export const OngletSupervisionDiscipline: React.FC = () => {
 
       {formulaireOuvert && (
         <form onSubmit={soumettreIncident} className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
-          <h4 className="text-sm font-bold text-slate-900">New Disciplinary Report</h4>
+          <h4 className="text-sm font-bold text-slate-900">Nouveau Rapport Disciplinaire</h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="text-xs font-semibold text-slate-700 block">Student Name</label>
+              <label className="text-xs font-semibold text-slate-700 block">Nom de l'élève</label>
               <input
                 type="text"
                 value={eleveNom}
                 onChange={(e) => setEleveNom(e.target.value)}
-                placeholder="e.g. Marcus Vance"
+                placeholder="Ex. Marcus Vance"
                 className="w-full mt-1 px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg"
                 required
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-slate-700 block">Cohort Class</label>
+              <label className="text-xs font-semibold text-slate-700 block">Classe</label>
               <select
                 value={classe}
                 onChange={(e) => setClasse(e.target.value)}
                 className="w-full mt-1 px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg"
               >
-                <option value="Grade 9-A">Grade 9-A</option>
-                <option value="Grade 10-A">Grade 10-A</option>
-                <option value="Grade 11-A">Grade 11-A</option>
-                <option value="Grade 12-A">Grade 12-A</option>
+                <option value="3ème A">3ème A</option>
+                <option value="2nde B">2nde B</option>
+                <option value="1ère S1">1ère S1</option>
+                <option value="Terminale S">Terminale S</option>
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-slate-700 block">Severity Level</label>
+              <label className="text-xs font-semibold text-slate-700 block">Niveau de Gravité</label>
               <select
                 value={gravite}
                 onChange={(e) => setGravite(e.target.value as any)}
                 className="w-full mt-1 px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg"
               >
-                <option value="mineure">Minor Infraction</option>
-                <option value="moyenne">Moderate Violation</option>
-                <option value="critique">Critical Incident</option>
+                <option value="mineure">Infraction Mineure (Bavardage, Retard)</option>
+                <option value="moyenne">Manquement Modéré (Devoir non fait, attitude)</option>
+                <option value="critique">Incident Critique (Bagarre, Tricherie)</option>
               </select>
             </div>
           </div>
           <div>
-            <label className="text-xs font-semibold text-slate-700 block">Incident Details</label>
+            <label className="text-xs font-semibold text-slate-700 block">Détails de l'incident</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe the infraction or behavioral incident..."
+              placeholder="Décrivez les faits constatés..."
               className="w-full mt-1 px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg"
               rows={2}
               required
             />
           </div>
           <div className="flex justify-end gap-2 pt-1">
-            <BoutonRouge texte="Cancel" variante="secondaire" taille="petit" onClick={() => setFormulaireOuvert(false)} />
-            <BoutonRouge texte="Submit Incident" taille="petit" type="submit" />
+            <BoutonRouge texte="Annuler" variante="secondaire" taille="petit" onClick={() => setFormulaireOuvert(false)} />
+            <BoutonRouge texte="Enregistrer l'incident" taille="petit" type="submit" />
           </div>
         </form>
       )}
 
-      {/* Disciplinary Register */}
+      {/* Registre Disciplinaire */}
       <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs">
         <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-          <span className="text-sm font-bold text-slate-900">Institutional Disciplinary Register</span>
-          <span className="text-xs font-bold text-slate-600">{listeIncidents.length} Recorded Incidents</span>
+          <span className="text-sm font-bold text-slate-900">Registre Disciplinaire de l'Établissement</span>
+          <span className="text-xs font-bold text-slate-600">{listeIncidents.length} Incident(s) consigné(s)</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
               <tr>
-                <th className="py-2.5 px-4">Student & Class</th>
-                <th className="py-2.5 px-4">Severity</th>
-                <th className="py-2.5 px-4">Incident Description</th>
-                <th className="py-2.5 px-4">Assigned Sanction</th>
-                <th className="py-2.5 px-4">Reported By</th>
-                <th className="py-2.5 px-4 text-right">Status</th>
+                <th className="py-2.5 px-4">Élève & Classe</th>
+                <th className="py-2.5 px-4">Gravité</th>
+                <th className="py-2.5 px-4">Description des Faits</th>
+                <th className="py-2.5 px-4">Sanction Décidée</th>
+                <th className="py-2.5 px-4">Signalé Par</th>
+                <th className="py-2.5 px-4 text-right">Statut</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -152,10 +147,10 @@ export const OngletSupervisionDiscipline: React.FC = () => {
         </div>
       </div>
 
-      {/* Academic Rankings */}
+      {/* Tableau d'Honneur Academique */}
       <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
         <h4 className="text-sm font-bold text-slate-900 pb-2 border-b border-slate-100">
-          Institution Academic Honor Roll (Top Performers)
+          Tableau d'Honneur & Majors de Promotion
         </h4>
         <div className="divide-y divide-slate-100 mt-2">
           {listeEleves.slice(0, 4).map((el, index) => (
@@ -170,8 +165,8 @@ export const OngletSupervisionDiscipline: React.FC = () => {
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-sm font-extrabold text-red-600 block">{el.moyenneGenerale}%</span>
-                <span className="text-[10px] font-semibold text-emerald-700">Attendance: {el.tauxPresence}%</span>
+                <span className="text-sm font-extrabold text-red-600 block">{el.moyenneGenerale} / 20</span>
+                <span className="text-[10px] font-semibold text-emerald-700">Assiduité : {el.tauxPresence}%</span>
               </div>
             </div>
           ))}
@@ -180,3 +175,4 @@ export const OngletSupervisionDiscipline: React.FC = () => {
     </div>
   );
 };
+

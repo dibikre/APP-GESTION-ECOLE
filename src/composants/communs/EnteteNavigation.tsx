@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   GraduationCap, Search, Bell, Shield, BookOpen, Briefcase, Users,
-  CreditCard, Building2, Megaphone, Menu, ChevronDown, Languages, ClipboardList, UserCheck,
+  CreditCard, Building2, Megaphone, Menu, ChevronDown, ClipboardList, UserCheck,
 } from 'lucide-react';
 import { utiliserAcademie } from '../../controleurs/contexteAcademie';
 import { RoleUtilisateur } from '../../modeles/types';
@@ -20,8 +20,6 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
     termeRecherche,
     definirTermeRecherche,
     listeAnnonces,
-    langueActuelle,
-    changerLangue,
     traduire,
   } = utiliserAcademie();
 
@@ -102,34 +100,6 @@ export const EnteteNavigation: React.FC<ProprietesEnteteNavigation> = ({ surBasc
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Quick Currency Selector */}
             <SelecteurDevise variante="compact" identifiant="selecteur-devise-entete" />
-
-            {/* Sélecteur de Langue (Français / Anglais) */}
-            <div className="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200" title="Langue / Language">
-              <button
-                type="button"
-                onClick={() => changerLangue('fr')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-md transition-colors min-h-[32px] flex items-center gap-1 cursor-pointer ${
-                  langueActuelle === 'fr'
-                    ? 'bg-red-600 text-white shadow-xs'
-                    : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200'
-                }`}
-              >
-                <Languages className="w-3 h-3" />
-                FR
-              </button>
-              <button
-                type="button"
-                onClick={() => changerLangue('en')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-md transition-colors min-h-[32px] flex items-center gap-1 cursor-pointer ${
-                  langueActuelle === 'en'
-                    ? 'bg-red-600 text-white shadow-xs'
-                    : 'text-slate-700 hover:text-slate-900 hover:bg-slate-200'
-                }`}
-              >
-                <Languages className="w-3 h-3" />
-                EN
-              </button>
-            </div>
 
             {/* Notifications Bulletins */}
             <div className="relative">

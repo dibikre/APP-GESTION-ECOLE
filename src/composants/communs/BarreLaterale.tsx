@@ -23,23 +23,23 @@ interface ProprietesBarreLaterale {
   surFermerMenuMobile: () => void;
 }
 
-const LIBELLES_ESPACE_ROLE: Record<RoleUtilisateur, { titreEn: string; titreFr: string; couleur: string }> = {
-  administrateur: { titreEn: 'Director & Admin', titreFr: 'Direction & Admin', couleur: 'bg-red-600' },
-  professeur: { titreEn: 'Faculty Portal', titreFr: 'Portail Enseignant', couleur: 'bg-blue-600' },
-  eleve: { titreEn: 'Student Portal', titreFr: 'Portail Élève', couleur: 'bg-purple-600' },
-  parent: { titreEn: 'Guardian & Family', titreFr: 'Parent & Tuteur', couleur: 'bg-amber-600' },
-  secretaire: { titreEn: 'Registrar & Desk', titreFr: 'Secrétariat & Scolarité', couleur: 'bg-indigo-600' },
-  comptable: { titreEn: 'Bursar & Treasury', titreFr: 'Comptabilité & Économe', couleur: 'bg-emerald-600' },
-  ressources_humaines: { titreEn: 'Human Resources', titreFr: 'Ressources Humaines', couleur: 'bg-rose-600' },
-  bibliothecaire: { titreEn: 'Library Center', titreFr: 'Bibliothèque & Médias', couleur: 'bg-teal-600' },
-  charge_communication: { titreEn: 'Public Relations', titreFr: 'Communication & Médias', couleur: 'bg-cyan-600' },
+const LIBELLES_ESPACE_ROLE: Record<RoleUtilisateur, { titre: string; couleur: string }> = {
+  administrateur: { titre: 'Direction & Admin', couleur: 'bg-red-600' },
+  professeur: { titre: 'Portail Enseignant', couleur: 'bg-blue-600' },
+  eleve: { titre: 'Portail Élève', couleur: 'bg-purple-600' },
+  parent: { titre: 'Parent & Tuteur', couleur: 'bg-amber-600' },
+  secretaire: { titre: 'Secrétariat & Scolarité', couleur: 'bg-indigo-600' },
+  comptable: { titre: 'Comptabilité & Économe', couleur: 'bg-emerald-600' },
+  ressources_humaines: { titre: 'Ressources Humaines', couleur: 'bg-rose-600' },
+  bibliothecaire: { titre: 'Bibliothèque & Médias', couleur: 'bg-teal-600' },
+  charge_communication: { titre: 'Communication & Médias', couleur: 'bg-cyan-600' },
 };
 
 export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
   menuMobileOuvert,
   surFermerMenuMobile,
 }) => {
-  const { roleActif, langueActuelle, traduire } = utiliserAcademie();
+  const { roleActif, traduire } = utiliserAcademie();
   const emplacement = useLocation();
   const naviguer = useNavigate();
 
@@ -112,10 +112,10 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
             <span className={`w-2.5 h-2.5 rounded-full ${infosEspace.couleur}`} />
             <div className="flex-1 min-w-0">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-                {langueActuelle === 'fr' ? 'Espace Rôle Dédié' : 'Contextual Workspace'}
+                Espace Rôle Dédié
               </span>
               <span className="text-xs font-bold text-slate-900 truncate block">
-                {langueActuelle === 'fr' ? infosEspace.titreFr : infosEspace.titreEn}
+                {infosEspace.titre}
               </span>
             </div>
           </div>
@@ -124,13 +124,13 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
         {/* Contextual Navigation Items */}
         <div className="p-3.5 flex-1 overflow-y-auto space-y-1">
           <div className="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-            {langueActuelle === 'fr' ? 'Menu Principal' : 'Dedicated Navigation'}
+            Menu Principal
           </div>
 
           {elementsNavigation.map((item) => {
             const Icone = item.icone;
             const estActif = verifierElementActif(item);
-            const libelleAffiche = langueActuelle === 'fr' ? item.libelleFr : item.libelleEn;
+            const libelleAffiche = item.libelleFr;
 
             return (
               <button
@@ -140,7 +140,7 @@ export const BarreLaterale: React.FC<ProprietesBarreLaterale> = ({
                 onClick={() => naviguerVersChemin(item.chemin)}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold min-h-[42px] transition-all text-left cursor-pointer group ${
                   estActif
-                    ? 'bg-red-50 text-red-700 border-l-4 border-red-600 shadow-2xs font-bold'
+                    ? 'bg-red-50 text-red-700 border-transparent shadow-[-4px_4px_0_0_#dc2626] font-bold'
                     : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900 border-l-4 border-transparent'
                 }`}
               >

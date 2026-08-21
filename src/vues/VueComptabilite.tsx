@@ -19,6 +19,7 @@ export const VueComptabilite: React.FC = () => {
     listeFactures,
     listeTransactions,
     listeEleves,
+    formaterDevise,
     traduire,
   } = utiliserAcademie();
 
@@ -58,21 +59,21 @@ export const VueComptabilite: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <CarteStatistique
           titre={traduire('totalFacture')}
-          valeur={`$${totalEmis.toLocaleString()}`}
-          sousTitre="All issued billing items"
+          valeur={formaterDevise(totalEmis)}
+          sousTitre="Total des frais émis"
           icone={DollarSign}
         />
         <CarteStatistique
           titre={traduire('recettesEncaissees')}
-          valeur={`$${totalRecouvre.toLocaleString()}`}
-          sousTitre="Processed to treasury"
+          valeur={formaterDevise(totalRecouvre)}
+          sousTitre="Encaissé en trésorerie"
           icone={ArrowDownLeft}
-          variation={{ texte: "Cleared", positive: true }}
+          variation={{ texte: "Encaissé", positive: true }}
         />
         <CarteStatistique
           titre={traduire('impayesRestants')}
-          valeur={`$${totalImpaye.toLocaleString()}`}
-          sousTitre="Pending student dues"
+          valeur={formaterDevise(totalImpaye)}
+          sousTitre="Reste à recouvrer"
           icone={AlertCircle}
         />
       </div>

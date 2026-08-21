@@ -151,15 +151,15 @@ export const OngletPersonnelSalaires: React.FC = () => {
         </div>
       </div>
 
-      {/* Leave Approvals */}
+      {/* Demandes de Congés */}
       <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
-        <h4 className="text-sm font-bold text-slate-900 pb-3 border-b border-slate-100">Pending Leave Approvals</h4>
+        <h4 className="text-sm font-bold text-slate-900 pb-3 border-b border-slate-100">Demandes de Congés en Attente d'Approbation</h4>
         <div className="divide-y divide-slate-100 mt-2">
           {listeDemandesConges.map((dem) => (
             <div key={dem.identifiant} className="py-3 flex items-center justify-between gap-4 text-xs">
               <div>
                 <span className="font-bold text-slate-900">{dem.nomEmploye}</span> &bull; <span className="text-slate-500">{dem.typeConge}</span>
-                <p className="text-[11px] text-slate-500 mt-0.5">{dem.dateDebut} to {dem.dateFin} &bull; {dem.motif}</p>
+                <p className="text-[11px] text-slate-500 mt-0.5">Du {dem.dateDebut} au {dem.dateFin} &bull; {dem.motif}</p>
               </div>
               <div className="flex items-center gap-2">
                 {dem.statut === 'en_attente' ? (
